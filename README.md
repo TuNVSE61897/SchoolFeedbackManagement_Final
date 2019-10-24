@@ -4,6 +4,15 @@
 - Product Type: Web app, Mobile App
 - Start Date: 08/01/2018
 - End Date: 29/04/2018
+- Tools andTechniques:
+Frontend: HTML, CSS, JavaScript, Bootstrap, Thymeleaf
+Backend: SpringBoot framework, Java
+IDE: NetBeans 8.2, IntelliJ IDEA 17.2, Android Studio 3.0
+Database: MySQL 5.7
+Modelling tool: Star UML 2.8.0
+Source control: Github
+Web browser: Chrome 42 or above
+Application Server: Tomcat 8.0
 
 =================================
 
