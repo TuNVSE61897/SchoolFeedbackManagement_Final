@@ -1,0 +1,29 @@
+.card-header-user {
+    padding: .75rem 1.25rem;
+    margin-bottom: 0;
+    background-color: rgba(0, 0, 0, .03);
+    border-bottom: 1px solid rgba(0, 0, 0, .125);
+    color: deepskyblue;
+    font-size: 12px
+}
+
+.add-new-user-wrapper {
+    width: 100%;
+    float: left;
+    padding-left: 15px;
+}
+
+.toggle-bar-wrapper {
+    width: 100%;
+    float: left;
+    padding: 10px 15px;
+}
+
+.filter-box {
+    width: auto;
+    margin-left: 10px;
+    padding-top: 8px;
+    padding-bottom: 8px;
+    border-radius: 0.2rem;
+    border-color: lightgrey;
+}

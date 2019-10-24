@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<html lang="en">
+
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <meta name="description" content="">
+        <meta name="author" content="">
+        <title>Xem báo cáo</title>
+        <!--Core style-->
+        <div th:replace="fragments/core-css"></div>
+        <!-- Bootstrap core JavaScript-->
+        <script src="vendor/jquery/jquery.min.js"></script>
+        <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+        <!-- Core plugin JavaScript-->
+        <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+        <script src="vendor/jquery-ui/jquery-ui.min.js"></script>
+        <!-- jQuery UI -->
+        <link href="vendor/jquery-ui/jquery-ui.min.css" rel="stylesheet" type="text/css">
+        <!-- custom style -->
+        <link href="css/view-report.css" rel="stylesheet" type="text/css">
+        <!-- custom script -->
+        <script src="js/view-report.js"></script>
+        <!-- dataTable -->
+        <link href="vendor/datatables/dataTables.bootstrap4.css" rel="stylesheet" type="text/css">
+        <link href="vendor/datatables/responsive.bootstrap4.min.css" rel="stylesheet" type="text/css">
+        <!--  <script src="http://pagination.js.org/dist/2.1.2/pagination.js"></script>-->
+    </head>
+
+    <body class="fixed-nav sticky-footer" id="page-top">
+        <!-- Navigation-->
+        <div th:insert="fragments/navbar-side"></div>
+        <div class="content-wrapper">
+            <div class="container-fluid">
+                <!-- Breadcrumbs-->
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item">
+                        <a href="index.html">Dashboard</a>
+                    </li>
+                    <li class="breadcrumb-item">
+                        <a href="#">Quản lý feedback</a>
+                    </li>
+                    <li class="breadcrumb-item active">Xem báo cáo</li>
+                </ol>
+                <!-- div content -->
+               <!-- <div class="row">
+                    <div class="col-12">
+                        <h1>Xem báo cáo</h1>
+                    </div>
+                </div>-->
+                <div class="row">
+
+                    <!-- div feedback content col-sm-12 col-12 col-md-9 col-xl-9 col-lg-12-->
+                    <div class="col-12">
+
+                            <h3 class="feedback-title" style="text-align: left">
+                               Báo cáo Feedbacks
+                            </h3>
+                            <div class="tab">
+                                <!-- <button class="tablinks" onclick="openCity(event, 'London')">Tất cả</button>
+                                 <button class="tablinks" onclick="openCity(event, 'Paris')">Chưa hoàn thành</button>-->
+                                <div class="tablinks-div">
+                                    Loại Feedback 
+                                    <select style="height: 35px; border-radius: 0.25em" name="">
+                                        <option>Tất cả</option>
+                                        <option>Phòng ban</option>
+                                        <option>Ngành</option>
+                                        <option>Môn</option>
+                                    </select>
+                                    &nbsp;&nbsp;&nbsp;
+                                    Sắp xếp
+                                    <select style="height: 35px;border-radius: 0.25em" name="">
+                                        <option>A-Z</option>
+                                        <option>Z-A</option>
+                                        <option>Tăng theo kỳ</option>
+                                        <option>Giảm theo kỳ</option>
+                                    </select>
+                                    &nbsp;&nbsp;&nbsp;
+                                    <!--     Tìm 
+                                         <input style="height: 35px; width: 150px; border-radius: 0.25em" type="" name="" value="" />-->
+                                </div>
+
+                            </div>
+                            <div class="col-sm-12 col-12 col-md-9 col-xl-9 col-lg-12 text-center feedback-content">
+
+                            </div>
+                            <form>
+                                <div class="feedback-page page-active">
+                                    <div class="card-outer">
+                                        <br/>
+                                        <div class="card-block">
+                                            <!--    <div class="card-text" style="padding: 15px; text-align: left">
+                                                    Kết quả mỗi trang 
+                                                    <select id="option">
+                                                        <option class="options" value="5">5</option>
+                                                        <option class="options" value="10">10</option>
+                                                        <option class="options" value="20">20</option>
+                                                        <option class="options" value="50">50</option>
+                                                        <option class="options" value="100">100</option>
+                                                    </select>
+                                                </div>-->
+                                            <!--  <table id="table-data" class="card-table">-->
+                                            <table id="availableTemplate" style="width:90%" class="card-table table table-responsive table-striped">
+                                                <thead>
+                                                    <tr class="card-header">
+                                                        <th>#</th>
+                                                        <th>Tên</th>
+                                                        <th>Tùy chọn</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr>
+                                                        <td>1</td>
+                                                        <td>	
+                                                            Phòng IT 
+                                                        </td>
+                                                        <td>
+                                                            <button formaction='view-report-details' class="btn btn-report">Xem báo cáo</button>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>2</td>
+                                                        <td>	
+                                                            Phòng Đào tạo
+                                                        </td>
+                                                        <td>
+                                                            <button class="btn btn-report">Xem báo cáo</button>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>3</td>
+                                                        <td>	
+                                                            Phòng Khảo thí
+                                                        </td>
+                                                        <td>
+                                                            <button class="btn btn-report">Xem báo cáo</button>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>4</td>
+                                                        <td>	
+                                                            Phòng Tuyển sinh
+                                                        </td>
+                                                        <td>
+                                                            <button class="btn btn-report">Xem báo cáo</button>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>5</td>
+                                                        <td>	
+                                                            Phòng Công tác Sinh viên 
+                                                        </td>
+                                                        <td>
+                                                            <button class="btn btn-report">Xem báo cáo</button>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>6</td>
+                                                        <td>	
+                                                            Phòng IT 
+                                                        </td>
+                                                        <td>
+                                                            <button class="btn btn-report">Xem báo cáo</button>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>7</td>
+                                                        <td>	
+                                                            Phòng Đào tạo
+                                                        </td>
+                                                        <td>
+                                                            <button class="btn btn-report">Xem báo cáo</button>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>8</td>
+                                                        <td>	
+                                                            Phòng Khảo thí
+                                                        </td>
+                                                        <td>
+                                                            <button class="btn btn-report">Xem báo cáo</button>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>9</td>
+                                                        <td>	
+                                                            Phòng Tuyển sinh
+                                                        </td>
+                                                        <td>
+                                                            <button class="btn btn-report">Xem báo cáo</button>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>10</td>
+                                                        <td>	
+                                                            Phòng Công tác Sinh viên 
+                                                        </td>
+                                                        <td>
+                                                            <button class="btn btn-report">Xem báo cáo</button>
+                                                        </td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>                           
+                                </div>
+                            </form>
+                
+
+                    </div>
+                    <!-- end div container -->
+                </div>
+            </div>
+            <!-- /.container-fluid-->
+            <!-- /.content-wrapper-->
+            <div th:replace="fragments/footer"></div>
+        </div>
+    </body>
+    <div th:replace="fragments/core-script"></div>
+    <!-- dataTable -->
+    <script src="vendor/datatables/jquery.dataTables.js"></script>
+    <script src="vendor/datatables/dataTables.bootstrap4.js"></script>
+    <script src="vendor/datatables/dataTables.responsive.min.js"></script>
+    <script src="vendor/datatables/responsive.bootstrap4.min.js"></script>
+    <script src="vendor/datatables/dataTables.select.min.js"></script>
+    <!-- Custom javascript -->
+    <script src="js/view-report.js"></script>
+</html>

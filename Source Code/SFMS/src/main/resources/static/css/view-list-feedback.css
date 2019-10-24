@@ -1,0 +1,239 @@
+body {
+    height: 100%;
+    width: 100%;
+    padding-top: 50px;
+}
+
+#filter-scope {
+    -webkit-border-radius: 0.25rem;
+    -moz-border-radius: 0.25rem;
+    border-radius: 0.25rem;
+    padding: 8px;
+    box-shadow: 5px 5px 25px 0 rgba(46, 61, 73, 0.2);
+    outline: none;
+<<<<<<< Updated upstream
+    cursor: pointer;
+     border: 1px solid #ccc;
+
+    padding: 14px 16px;
+    transition: 0.3s;
+    font-size: 17px;
+}
+
+/* Change background color of buttons on hover */
+.tab button:hover {
+    background-color: #eef;
+}
+
+/* Create an active/current tablink class */
+.tab button.active {
+    background-color: #eef;
+ 
+}
+
+/* Style the tab content */
+.tabcontent {
+    display: none;
+    padding: 6px 12px;
+    border: 1px solid #ccc;
+    border-top: none;
+}
+
+.feedback-title {
+    color: #fff;
+    background-color: #08AE9E;
+    padding: 5px;
+    font-weight: bold;
+}
+
+.feedback-content {
+    /*border: 2px #08AE9E solid;*/
+    border-radius: 5px;
+}
+
+.card-header-outer {
+    background-color: #F5F5F5;
+    color: #08AE9E;
+    text-align: left;
+    font-size: 24px;
+    font-weight: bold;
+    padding: 0.25rem 1.25rem;
+    margin-bottom: 0;
+    border-bottom: 1px solid #08AE9E;
+    
+}
+
+.card-header {
+    background-color: #08AE9E;
+    color: #fff;
+    text-align: center;
+    background-clip: border-box;
+  border: 2px solid #fff;
+  border-radius: 0.25rem;
+   
+}
+
+.card-block {
+    padding-left: 0rem;
+    text-align: left;
+}
+
+/* .form-group{
+    text-align: left;
+} */
+
+.form-control {
+    width: 150px;   
+}
+
+.input-group-btn {
+    align-items: center;
+    vertical-align: middle;s
+     background-color: #08AE9E;
+}
+
+.fa {
+  display: inline-block;
+  font: normal normal normal 14px/1 FontAwesome;
+  font-size: inherit;
+  text-rendering: auto;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.card-outer {
+  position: relative;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-direction: column;
+      flex-direction: column;
+  min-width: 0;
+  word-wrap: break-word;
+  background-color: #fff;
+  background-clip: border-box;
+  border: 1px solid #08AE9E;
+  border-radius: 0.25rem;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+  
+
+.card {
+    margin-top: 5px;
+    margin-bottom: 20px;
+    margin-left: 20px;
+    margin-right: 20px;
+}
+
+.table {
+     margin-top: 5px;
+    margin-bottom: 20px;
+    margin-left: 20px;
+    margin-right: 20px;
+    width: 90%;
+  background-color: #fff;
+}
+
+.table tbody tr td {
+     font-size: 16px;
+}
+
+.form-group-suggest {
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex: 0 0 auto;
+        flex: 0 0 auto;
+    -ms-flex-flow: row wrap;
+        flex-flow: row wrap;
+    -ms-flex-align: center;
+        align-items: left;
+    margin-bottom: 0;
+  }
+
+.feedback-page {
+    display: none;
+}
+
+.page-active {
+    display: block;
+}
+
+.btn-pagination {
+    border: #08AE9E 2px solid;
+    border-radius: 10px;
+    color: #08AE9E;
+    background-color: #fff;
+}
+
+.btn-submit {
+    border: #fff 2px solid;
+    border-radius: 5px;
+    background-color: #08AE9E;
+    color: #fff;
+}
+
+.progress {
+    height: 40px;
+    border-radius: 20px;
+}
+
+.progress-bar {
+    background-color: #08AE9E;
+}
+=======
+}
+
+#tblFeedback {
+    margin: 0;
+    table-layout: fixed;
+    width: 100%;
+    word-break: keep-all;
+}
+
+#tblFeedback td, th {
+    -ms-word-wrap: break-word;
+    word-wrap: break-word;
+    white-space: normal;
+    word-break: keep-all;
+}
+
+.btn-filter {
+    transition: background-color ease-out 0.4s;
+    padding: 8px;
+    width: 150px;
+    border: #08ae9e 2px solid;
+    border-radius: 2rem;
+    background-color: #ffffff;
+    color: #08ae9e;
+    margin-right: 10px;
+    box-shadow: 5px 5px 25px 0 rgba(46, 61, 73, 0.2);
+    outline: 0;
+}
+
+.btn-filter.active {
+    color: #ffff;
+    background-color: #08ae9e;
+    transition: background-color ease-in 0.4s;
+}
+
+/*#tblFeedback th:nth-of-type(1), td:nth-of-type(1){*/
+/*min-width:25%;*/
+/*width:25%;*/
+/*}*/
+/*#tblFeedback th:nth-of-type(2),th:nth-of-type(3),th:nth-of-type(4),th:nth-of-type(5), th:nth-of-type(6), td:nth-of-type(2),td:nth-of-type(3),td:nth-of-type(4),td:nth-of-type(5), td:nth-of-type(6){*/
+/*min-width:15%;*/
+/*width:15%;*/
+/*}*/
+
+.toggle-bar-wrapper {
+    margin-top: 20px;
+    width: 100%;
+    float: left;
+}
+
+.table-wrapper {
+    margin-top: 20px;
+    width: 100%;
+    float: left;
+}
+>>>>>>> Stashed changes

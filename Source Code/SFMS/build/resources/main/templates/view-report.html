@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>Xem báo cáo</title>
+    <!--Core style-->
+    <div th:replace="fragments/core-css"></div>
+    <link rel="stylesheet" th:href="@{/css/view-report.css}">
+</head>
+
+<body class="fixed-nav sticky-footer" id="page-top">
+<!-- Navigation-->
+<div th:insert="fragments/navbar-side"></div>
+<div class="content-wrapper">
+    <div class="container-fluid">
+        <!-- Breadcrumbs-->
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item">
+                <a href="index.html">Dashboard</a>
+            </li>
+            <li class="breadcrumb-item">
+                <a href="#">Quản lý feedback</a>
+            </li>
+            <li class="breadcrumb-item active">Xem báo cáo</li>
+        </ol>
+        <!-- div content -->
+        <!-- <div class="row">
+             <div class="col-12">
+                 <h1>Xem báo cáo</h1>
+             </div>
+         </div>-->
+        <div class="row">
+            <!-- div feedback content col-sm-12 col-12 col-md-9 col-xl-9 col-lg-12-->
+            <div class="col-12">
+                <h3 class="feedback-title" style="text-align: left">
+                    Báo cáo Feedbacks
+                </h3>
+                <div class="tab">
+                    <!-- <button class="tablinks" onclick="openCity(event, 'London')">Tất cả</button>
+                     <button class="tablinks" onclick="openCity(event, 'Paris')">Chưa hoàn thành</button>-->
+                    <div class="tablinks-div">
+                        Loại Feedback
+                        <select style="height: 35px; border-radius: 0.25em" id="filter-scope">
+                            <option value="Phòng ban">Phòng ban</option>
+                            <option value="Chuyên ngành">Chuyên ngành</option>
+                            <option value="Môn học">Môn học</option>
+                            <option value="Lớp">Lớp</option>
+                        </select>
+                        &nbsp;&nbsp;&nbsp;
+                        Sắp xếp
+                        <select style="height: 35px;border-radius: 0.25em" name="" id="filter-sort">
+                            <option value="Asc">A-Z</option>
+                            <option value="Des">Z-A</option>
+                        </select>
+                        &nbsp;&nbsp;&nbsp;
+                        <!--     Tìm
+                             <input style="height: 35px; width: 150px; border-radius: 0.25em" type="" name="" value="" />-->
+                    </div>
+                </div>
+            </div>
+            <!-- end div container -->
+        </div>
+        <div class="row">
+            <div class="col-12">
+                <table id="tblDep" class="table table-bordered">
+                    <thead>
+                    <tr>
+                        <th class="w-75">Tên phòng</th>
+                        <th class="w-25"></th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <th:block th:if="${feedbackTarget.departments.isEmpty()}">
+                        <tr>
+                            <td colspan="2">Hiện tại không có phòng ban nào trong danh sách</td>
+                        </tr>
+                    </th:block>
+                    <th:block th:unless="${feedbackTarget.departments.isEmpty()}">
+                        <tr th:attr="data-name=${department.name}" th:each="department:${feedbackTarget.departments}">
+                            <td th:text="${department.name}"></td>
+                            <td class="text-center"><a th:href="@{/view-report-details}" class="btn btn-raised-primary">Xem
+                                báo cáo</a></td><!--TODO sửa đây ông eiii-->
+                        </tr>
+                    </th:block>
+                    </tbody>
+                </table>
+                <table id="tblMajor" class="table table-bordered" style="display: none">
+                    <thead>
+                    <tr>
+                        <th class="w-50">Tên</th>
+                        <th class="w-25">Mã ngành</th>
+                        <th class="w-25"></th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <th:block th:if="${feedbackTarget.majors.isEmpty()}">
+                        <tr>
+                            <td colspan="3">Hiện tại không có chuyên ngành nào trong danh sách</td>
+                        </tr>
+                    </th:block>
+                    <th:block th:unless="${feedbackTarget.majors.isEmpty()}">
+                        <tr th:attr="data-name=${major.name}" th:each="major:${feedbackTarget.majors}">
+                            <td th:text="${major.name}"></td>
+                            <td th:text="${major.code}"></td>
+                            <td class="text-center"><a th:href="@{/view-report-details}" class="btn btn-raised-primary">Xem
+                                báo cáo</a></td><!--TODO sửa đây ông eiii-->
+                        </tr>
+                    </th:block>
+                    </tbody>
+                </table>
+                <table id="tblCourse" class="table table-bordered" style="display: none">
+                    <thead>
+                    <tr>
+                        <th class="w-50">Tên</th>
+                        <th class="w-25">Mã môn</th>
+                        <th class="w-25"></th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <th:block th:if="${feedbackTarget.courses.isEmpty()}">
+                        <tr>
+                            <td colspan="3">Hiện tại không có môn nào trong danh sách</td>
+                        </tr>
+                    </th:block>
+                    <th:block th:unless="${feedbackTarget.courses.isEmpty()}">
+                        <tr th:attr="data-name=${course.name}" th:each="course:${feedbackTarget.courses}">
+                            <td th:text="${course.name}"></td>
+                            <td th:text="${course.code}"></td>
+                            <td class="text-center"><a th:href="@{/view-report-details}" class="btn btn-raised-primary">Xem
+                                báo cáo</a></td><!--TODO sửa đây ông eiii-->
+                        </tr>
+                    </th:block>
+                    </tbody>
+                </table>
+                <table id="tblClass" class="table table-bordered" style="display: none">
+                    <thead>
+                    <tr>
+                        <th class="w-25">Tên lớp</th>
+                        <th class="w-25">Giảng viên</th>
+                        <th class="w-25">Môn học</th>
+                        <th class="w-25"></th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <th:block th:if="${feedbackTarget.classes.isEmpty()}">
+                        <tr>
+                            <td colspan="4">Hiện tại không có danh phòng ban nào trong danh sách</td>
+                        </tr>
+                    </th:block>
+                    <th:block th:unless="${feedbackTarget.classes.isEmpty()}">
+                        <tr th:attr="data-name=${class.className}" th:each="class:${feedbackTarget.classes}">
+                            <td th:text="${class.className}"></td>
+                            <td th:text="${class.userByLecturerId.fullname}"></td>
+                            <td th:text="${class.courseByCourseId.name}"></td>
+                            <td class="text-center"><a th:href="@{/view-report-details}" class="btn btn-raised-primary">Xem
+                                báo cáo</a></td><!--TODO sửa đây ông eiii-->
+                        </tr>
+                    </th:block>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <!-- /.container-fluid-->
+    <!-- /.content-wrapper-->
+    <div th:replace="fragments/footer"></div>
+</div>
+</body>
+<div th:replace="fragments/core-script"></div>
+<!-- Custom javascript -->
+<script th:src="@{/js/view-report.js}"></script>
+</html>

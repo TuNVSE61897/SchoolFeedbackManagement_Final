@@ -1,0 +1,40 @@
+h5.overview-title{
+    color: #08AE9E;
+    margin-left: 2%;
+    margin-top: 1%;
+    text-align: center;
+}
+.card-header-criteria {
+    padding: .75rem 1.25rem;
+    margin-bottom: 0;
+    background-color: rgba(0, 0, 0, .03);
+    border-bottom: 1px solid rgba(0, 0, 0, .125);
+    color: #4cae4c;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.btn-check-target{
+    color: #08AE9E;
+    background-color: #FFFFFF;
+    border: 1px solid #08AE9E;
+}
+
+.btn-checked{
+    color: #e0a800;
+    background-color: #FFFFFF;
+    border: 1px solid #e0a800;
+}
+
+.form-row > div > label{
+    margin-top: 1%;
+    color: #28a745;
+    font-weight: bold;
+    font-size: 18px;
+}
+.form-row > div > label.radio-inline, .form-row > div > label.orLabel{
+    color:#6c757d;
+}
+.form-row > div > label.orLabel{
+    margin-left: 2%;
+}

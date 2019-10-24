@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Log in</title>
+    <!-- Bootstrap core CSS-->
+    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Custom fonts for this template-->
+    <link href="vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="css/login.css">
+    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="js/login.js"></script>
+</head>
+
+<body>
+    <img src="img/Students.jpg" id="main-container">
+    <div class="container">
+        <div class="row justify-content-around">
+            <div class="col-md-6 col-12">
+                <img src="img/img-logo-fe.jpg" style="width:100%; height: auto">
+            </div>
+        </div>
+        <div class="row justify-content-around" style="margin-top: 50px">
+            <div class="col-md-6 col-12">
+                <div class="loading-gif">
+                    <img src="img/loading-gif-transparent-4.gif" class="loading-img">
+                </div>
+                <div class="card text-center log-in-card">
+                    <div class="card-block">
+                        <h4 class="card-title" style="color:#08AE9E">Vui lòng đăng nhập vào hệ thống</h4>
+                        <hr />
+                        <form action="#">
+                            <div class="form-group row justify-content-center">
+                                <label class="col-4 col-form-label text-right">Email: </label>
+                                <div class="col-8 input-group">
+                                    <input type="email" class="form-control" name="txtEmail" placeholder="Email">
+                                </div>
+                            </div>
+                            <div class="form-group row justify-content-center">
+                                <label class="col-4 col-form-label text-right">Mật khẩu: </label>
+                                <div class="col-8">
+                                    <input type="password" class="form-control" name="txtEmail" placeholder="Mật khẩu">
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label class="form-check-label col-8 offset-2 text-left">
+                                    <input type="checkbox" class="form-check-input"> Nhớ tài khoản
+                                </label>
+                            </div>
+                            <button class="btn btn-submit col-12" id="btnSubmit">
+                                <b>Đăng nhập</b>
+                            </button>
+                        </form>
+                        <br>
+                        <a href="#">Quên mật khẩu?</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+<!-- Bootstrap core JavaScript-->
+<script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+<!-- Core plugin JavaScript-->
+<script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+<!-- Custom scripts for all pages-->
+<script src="js/sb-admin.min.js"></script>
+
+</html>

@@ -1,0 +1,146 @@
+/*!* CSS used here will be applied after bootstrap.css *!*/
+
+.nav-wizard > li {
+    float: left;
+}
+.nav-wizard > li > a {
+    position: relative;
+    background-color: #eeeeee;
+    color: #08AE9E;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+.nav-wizard > li > a .badge {
+    margin-left: 3px;
+    color: #eeeeee;
+    background-color: #08AE9E;
+}
+.nav-wizard > li > a .badge.badge-step {
+    color: #08AE9E;
+    border: 1px solid #08AE9E;
+    border-radius: 50%;
+    padding: 3px 5px;
+    background-color: transparent;
+}
+.nav-wizard > li.active > a .badge.badge-step {
+    color: #FFFFFF;
+    border: 1px solid #FFFFFF;
+    border-radius: 50%;
+    padding: 3px 5px;
+    background-color: transparent;
+}
+/*.nav-wizard > li:not(:first-child) > a {*/
+.nav-wizard > li > a {
+    padding-left: 28px;
+}
+/*.nav-wizard > li:not(:first-child) > a:before {*/
+.nav-wizard > li:not(:first-child) > a:before {
+    width: 0px;
+    height: 0px;
+    border-top: 16px inset transparent;
+    border-bottom: 16px inset transparent;
+    border-left: 20px solid #ffffff;
+    position: absolute;
+    content: "";
+    top: 0;
+    left: 0;
+}
+/*.nav-wizard > li:not(:last-child) > a {*/
+.nav-wizard > li > a {
+    margin-right: 4px;
+    padding-right: 10px;
+}
+.nav-wizard > li:not(:last-child) > a:after {
+/*.nav-wizard > li > a:after {*/
+    width: 0px;
+    height: 0px;
+    border-top: 16px inset transparent;
+    border-bottom: 16px inset transparent;
+    border-left: 20px solid #eeeeee;
+    position: absolute;
+    content: "";
+    top: 0;
+    right: -20px;
+    z-index: 2;
+}
+/*.nav-wizard > li:first-child > a {
+  border-top-left-radius: 4px;
+  border-bottom-left-radius: 4px;
+}*/
+/*.nav-wizard > li:last-child > a {
+  border-top-right-radius: 4px;
+  border-bottom-right-radius: 4px;
+}*/
+.nav-wizard > li.done:hover > a,
+.nav-wizard > li:hover > a {
+    background-color: #d5d5d5;
+}
+.nav-wizard > li.done:hover > a:before,
+.nav-wizard > li:hover > a:before {
+    border-right-color: #d5d5d5;
+}
+.nav-wizard > li.done:hover > a:after,
+.nav-wizard > li:hover > a:after {
+    border-left-color: #d5d5d5;
+}
+.nav-wizard > li.done > a {
+    background-color: #e2e2e2;
+}
+.nav-wizard > li.done > a:before {
+    border-right-color: #e2e2e2;
+}
+.nav-wizard > li.done > a:after {
+    border-left-color: #e2e2e2;
+}
+.nav-wizard > li.active > a,
+.nav-wizard > li.active > a:hover,
+.nav-wizard > li.active > a:focus {
+    color: #ffffff;
+    background-color: #08AE9E;
+}
+.nav-wizard > li.active > a:after {
+    border-left-color: #08AE9E;
+}
+.nav-wizard > li.active > a .badge {
+    color: #08AE9E;
+    background-color: #ffffff;
+}
+.nav-wizard > li.disabled > a {
+    color: #777777;
+}
+.nav-wizard > li.disabled > a:hover,
+.nav-wizard > li.disabled > a:focus {
+    color: #777777;
+    text-decoration: none;
+    background-color: #eeeeee;
+    cursor: default;
+}
+.nav-wizard > li.disabled > a:before {
+    border-right-color: #eeeeee;
+}
+.nav-wizard > li.disabled > a:after {
+    border-left-color: #eeeeee;
+}
+.nav-wizard.nav-justified > li {
+    float: none;
+}
+.nav-wizard.nav-justified > li > a {
+    padding: 10px 15px;
+}
+@media (max-width: 768px) {
+    .nav-wizard.nav-justified > li > a {
+        /*border-radius: 4px;*/
+        margin-right: 0;
+    }
+    .nav-wizard.nav-justified > li > a:before,
+    .nav-wizard.nav-justified > li > a:after {
+        border: none !important;
+    }
+}
+.to-next-step, .to-previous-step{
+    background-color: #08AE9E;
+    color: #FFFFFF;
+    font-size: x-large;
+    margin-left: 1%;
+    margin-right: 1%;
+}

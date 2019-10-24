@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>List User Page</title>
+    <div th:replace="fragments/core-css"></div>
+    <!-- Page level plugin CSS-->
+    <link href="vendor/datatables/dataTables.bootstrap4.css" rel="stylesheet">
+    <!-- Custom styles for this template-->
+    <link href="vendor/datatables/dataTables.bootstrap4.css" rel="stylesheet">
+    <link href="css/view-list-users.css" rel="stylesheet">
+</head>
+
+<body class="fixed-nav sticky-footer bg-dark" id="page-top">
+<div th:insert="fragments/navbar-side"></div>
+<div class="content-wrapper">
+    <div class="container-fluid">
+        <!-- Breadcrumbs-->
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item">
+                <a href="index.html">Dashboard</a>
+            </li>
+            <li class="breadcrumb-item active">Quản lí tài khoản</li>
+        </ol>
+        <!-- Example DataTables Card-->
+        <div class="card mb-3">
+            <div class="card-header-user">
+                <i class="fa fa-table"></i> Quản lý người dùng hệ thống
+            </div>
+            <div class="card-body">
+                <div class="form-row" align="center">
+                    <div class="form-group col-sm-2">
+                        <button formaction='modify-user-details' type="button" class="btn btn-add-user"><i
+                                class="fa fa-plus"></i> Thêm người dùng
+                        </button>
+                    </div>
+                    <!--SubMajor-->
+                    <div class="form-group col-sm-2">
+                        <div class="input-group input-group-sm">
+                            <input list="list-departments" class="form-control" placeholder="Phòng ban"/>
+                        </div>
+                        <datalist id="list-departments">
+                            <!--<datalist id="list-departments" th:each="department : ${departments}">-->
+                            <!--<option th:utext="${department.name}">...</option>-->
+                            <option>Phòng Tuyển sinh</option>
+                            <option>Ban giám hiệu</option>
+                            <option>Phòng Hành chính</option>
+                            <option>Phòng Đào tạo</option>
+                            <option>Phòng Khảo thí</option>
+                            <option>Phòng IT</option>
+                            <option>Phòng CTSV</option>
+                            <option>Phòng PDP</option>
+                            <option>Phòng Thư viện</option>
+                            <option>Phòng Y tế</option>
+                            <option>Phòng Bảo vệ</option>
+                        </datalist>
+                    </div>
+                    <div class="form-group col-sm-2">
+                        <div class="input-group input-group-sm">
+                            <input list="list-majors" class="form-control" placeholder="Chuyên ngành"/>
+                        </div>
+                        <datalist id="list-majors">
+                            <!--<datalist id="list-majors" th:each="major : ${majors}">-->
+                            <!--<option th:utext="${major.code}">...</option>-->
+                            <option>SE</option>
+                            <option>SB</option>
+                            <option>IA</option>
+                            <option>JS</option>
+                            <option>IS</option>
+                            <option>ES</option>
+                        </datalist>
+                    </div>
+
+                    <!--major-->
+                    <div class="form-group col-sm-2">
+                        <div class="input-group input-group-sm">
+                            <input list="list-roles" class="form-control" placeholder="Phân quyền"/>
+                        </div>
+                        <datalist id="list-roles"
+                        ">
+                        <!--<datalist id="list-roles" th:each="role : ${roles}">-->
+                        <!--<option th:utext="${role.name}">...</option>-->
+                        <option>Head of Academic</option>
+                        <option>Student</option>
+                        <option>Lecturer</option>
+                        <option>Staff</option>
+                        </datalist>
+                    </div>
+                    <!--end major-->
+                    <!--Subject-->
+                    <div class="form-group col-sm-2">
+                        <div class="input-group input-group-sm">
+                            <input list="list-statuzz" class="form-control" placeholder="Trạng thái"/>
+                        </div>
+                        <datalist id="list-statuzz">
+                            <option>Active</option>
+                            <option>Deactivate</option>
+                        </datalist>
+                    </div>
+                    <!--end Subjects-->
+                </div>
+                <div class="table-responsive">
+                    <table class="table table-bordered" id="tbl-users" width="100%" cellspacing="0">
+                        <thead>
+                        <tr>
+                            <th>Họ & Tên</th>
+                            <th>Phân quyền</th>
+                            <th>Phòng ban</th>
+                            <th>Chuyên ngành</th>
+                            <th>Trạng thái</th>
+                            <th>Email</th>
+                        </tr>
+                        </thead>
+                        <tfoot>
+                        <tr>
+                            <th>Họ & Tên</th>
+                            <th>Phân quyền</th>
+                            <th>Phòng ban</th>
+                            <th>Chuyên ngành</th>
+                            <th>Trạng thái</th>
+                            <th>Email</th>
+                        </tr>
+                        </tfoot>
+                        <tbody>
+                        <!--show each data records-->
+                        <!--<tr th:each ="user : ${users}">-->
+                        <!--<td th:utext="${user.fullname}">...</td>-->
+                        <!--<td th:utext="${user.roleByRoleId.roleName}">...</td>-->
+                        <!--<td th:utext="${user.departmentByDepartmentId.name}">...</td>-->
+                        <!--<td th:utext="${user.majorByMajorId.code}">...</td>-->
+                        <!--<td th:utext="${user.status==1}?'Active':'Deactive'">...</td>-->
+                        <!--<td th:utext="${user.email}">...</td>-->
+                        <!--</tr>-->
+                        <!--end show data records-->
+                        <tr>
+                            <td><a href="#">Thái Tiến</a></td>
+                            <td><a href="#">Hoàng</a></td>
+                            <td>Phòng đào tạo</td>
+                            <td>Staff</td>
+                            <td>Active</td>
+                            <td>hoangtt@fpt.edu.vn</td>
+                        </tr>
+                        <tr>
+                            <td><a href="#">Hoàng Quốc</a></td>
+                            <td><a href="#">Việt</a></td>
+                            <td>Phòng IT</td>
+                            <td>Staff</td>
+                            <td>Active</td>
+                            <td>viethq@fpt.edu.vn</td>
+                        </tr>
+                        <tr>
+                            <td><a href="#">Nguyễn Việt</a></td>
+                            <td><a href="#">Tú</a></td>
+                            <td>Ban giám hiệu</td>
+                            <td>Hiệu trưởng</td>
+                            <td>Active</td>
+                            <td>tunv@fpt.edu.vn</td>
+                        </tr>
+                        <tr>
+                            <td><a href="#">Sơn Tùng</a></td>
+                            <td><a href="#">MTP</a></td>
+                            <td>JS</td>
+                            <td>Student</td>
+                            <td>Deactive</td>
+                            <td>tungmtp@fpt.edu.vn</td>
+                        </tr>
+                        <tr>
+                            <td><a href="#">Cena</a></td>
+                            <td><a href="#">John</a></td>
+                            <td>Phòng bảo vệ</td>
+                            <td>Staff</td>
+                            <td>Active</td>
+                            <td>johncena@fpt.edu.vn</td>
+                        </tr>
+                        <tr>
+                            <td><a href="#">Orton</a></td>
+                            <td><a href="#">Randy</a></td>
+                            <td>ES</td>
+                            <td>Student</td>
+                            <td>Deactive</td>
+                            <td>randyorton@fpt.edu.vn</td>
+                        </tr>
+                        <tr>
+                            <td><a href="#">Trần Hồ Minh</a></td>
+                            <td><a href="#">Thuấn</a></td>
+                            <td>SB</td>
+                            <td>Student</td>
+                            <td>Active</td>
+                            <td>thuanthm@fpt.edu.vn</td>
+                        </tr>
+                        <tr>
+                            <td><a href="#">Kiều Trọng</a></td>
+                            <td><a href="#">Khánh</a></td>
+                            <td>Phòng đào tạo</td>
+                            <td>Lecturer</td>
+                            <td>Active</td>
+                            <td>khanhkt@fpt.edu.vn</td>
+                        </tr>
+                        <tr>
+                            <td><a href="#">Bạch Minh</a></td>
+                            <td><a href="#">Đức</a></td>
+                            <td>IS</td>
+                            <td>Student</td>
+                            <td>Deactive</td>
+                            <td>ducbm@fpt.edu.vn</td>
+                        </tr>
+                        <tr>
+                            <td><a href="#">Trần Nho</a></td>
+                            <td><a href="#">Hiếu</a></td>
+                            <td>IS</td>
+                            <td>Student</td>
+                            <td>Active</td>
+                            <td>hieutn@fpt.edu.vn</td>
+                        </tr>
+                        <tr>
+                            <td><a href="#">Lâm Hữu Khánh</a></td>
+                            <td><a href="#">Phương</a></td>
+                            <td>Phòng đào tạo</td>
+                            <td>Lecturer</td>
+                            <td>Active</td>
+                            <td>phuonglhk@fpt.edu.vn</td>
+                        </tr>
+                        <tr>
+                            <td><a href="#">Quách Kiên</a></td>
+                            <td><a href="#">Cường</a></td>
+                            <td>Ban giám hiệu</td>
+                            <td>Hiệu phó</td>
+                            <td>Deactive</td>
+                            <td>cuongqk@fpt.edu.vn</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- /.container-fluid-->
+    <!-- /.content-wrapper-->
+    <footer th:replace="fragments/footer"></footer>
+    <!-- Bootstrap core JavaScript-->
+    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <!-- Core plugin JavaScript-->
+    <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+    <!-- Page level plugin JavaScript-->
+    <script src="vendor/datatables/jquery.dataTables.js"></script>
+    <script src="vendor/datatables/dataTables.bootstrap4.js"></script>
+    <!-- Custom scripts for all pages-->
+    <script src="js/sb-admin.min.js"></script>
+    <!-- Custom scripts for this page-->
+    <!--<script src="js/sb-admin-datatables.min.js"></script>-->
+    <script src="js/view-list-users.js"></script>
+</div>
+</body>
+
+</html>

@@ -1,0 +1,205 @@
+/*help tip*/
+.help-tip{
+    position: absolute;
+    bottom: 18px;
+    left: 18px;
+    text-align: center;
+    background-color: #BCDBEA;
+    border-radius: 50%;
+    width: 24px;
+    height: 24px;
+    font-size: 14px;
+    line-height: 26px;
+    cursor: default;
+    z-index:1000;
+}
+
+.help-tip:before{
+    content:'?';
+    font-weight: bold;
+    color:#fff;
+}
+
+.help-tip:hover p{
+    display:block;
+    transform-origin: 100% 0%;
+
+    -webkit-animation: fadeIn 0.3s ease-in-out;
+    animation: fadeIn 0.3s ease-in-out;
+
+}
+
+.help-tip p{    /* The tooltip */
+    display: none;
+    text-align: left;
+    background-color: #1E2021;
+    padding: 20px;
+    width: 300px;
+    position: absolute;
+    border-radius: 3px;
+    box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.2);
+    right: -4px;
+    color: #FFF;
+    font-size: 13px;
+    line-height: 1.4;
+}
+
+.help-tip p:before{ /* The pointer of the tooltip */
+    position: absolute;
+    content: '';
+    width:0;
+    height: 0;
+    border:6px solid transparent;
+    border-bottom-color:#1E2021;
+    right:10px;
+    top:-12px;
+}
+
+.help-tip p:after{ /* Prevents the tooltip from being hidden */
+    width:100%;
+    height:40px;
+    content:'';
+    position: absolute;
+    top:-40px;
+    left:0;
+}
+
+/* CSS animation */
+@-webkit-keyframes fadeIn {
+    0% {
+        opacity:0;
+        transform: scale(0.6);
+    }
+
+    100% {
+        opacity:1;
+        transform: scale(1);
+    }
+}
+
+@keyframes fadeIn {
+    0% { opacity:0; }
+    100% { opacity: 1; }
+}
+/*end help tip*/
+
+
+.template-container {
+    z-index:0;
+}
+.template-container > .card{
+    margin-top: 10px;
+}
+.template-thumbnail{
+    margin-top: 20px;
+    margin-left: 20px;
+    margin-right: 20px;
+    overflow: visible;
+    padding: 0;
+    min-height:250px;
+}
+.create-new-container:hover, .thumbnail-content:hover{
+    box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+    cursor: pointer;
+}
+.create-new-container, .thumbnail-content{
+    margin-bottom: 10px;
+    padding:15px;
+    word-break: keep-all;
+    word-wrap: break-word;
+    font-size: 20px;
+    box-sizing: border-box;
+    border: lightgray 1px solid;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+    transition: all 0.3s cubic-bezier(.25,.8,.25,1);
+    overflow: hidden;
+    height:200px;
+}
+.thumbnail-action{
+    padding-left:10%;
+    padding-top:10px;
+    width:100%;
+    display: none;
+}
+
+.template-thumbnail.active > .thumbnail-action{
+    display: inline!important;
+}
+.template-thumbnail.active> .thumbnail-content{
+    box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+}
+.template-thumbnail.active{
+    /*border: #08ae9e 1px solid;*/
+}
+.template-thumbnail.active > .thumbnail-content{
+    /*opacity: 0.5;*/
+}
+
+.thumbnail-action > button{
+    word-wrap: break-word;
+    display: inline;
+    /*margin:10px;*/
+    width:40%;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+    transition: all 0.3s cubic-bezier(.25,.8,.25,1);
+}
+
+.btn{
+    transition: all 450ms cubic-bezier(0.23, 1, 0.32, 1) 0ms;
+}
+
+.btn-create-new{
+    width:100%;
+
+}
+.btn-select-feedback:hover, .btn-create-new:hover{
+
+}
+.btn-select{
+    width:100%;
+}
+.btn:hover{
+    cursor: pointer;
+}
+
+/*#modalTemplate>.modal-dialog>.modal-header{*/
+    /*position:fixed;*/
+    /*top:0;*/
+    /*height:0;*/
+/*}*/
+
+#modalTemplate>.modal-dialog>.modal-content>.modal-body{
+    max-height: 500px;
+    overflow-y: scroll;
+    overflow-x: hidden;
+}
+
+.create-new-container{
+    width:100%;
+    height:200px;
+}
+
+.create-new-wrapper>button{
+    margin-top:20px;
+    width: 50px;
+    height:50px;
+    border-radius: 100%;
+    font-size:20px;
+}
+/*.nav-link{*/
+    /*color: #000000;*/
+/*}*/
+
+/*.nav-tabs .nav-item.show .nav-link, .nav-tabs .nav-link.active{*/
+    /*color:#08ae9e;*/
+    /*border-top: none;*/
+    /*border-left: none;*/
+    /*border-right:none;*/
+    /*border-bottom: #08ae9e 3px solid;*/
+/*}*/
+/*.nav-tabs .nav-item.show .nav-link, .nav-tabs .nav-link:hover{*/
+    /*color:#08ae9e;*/
+/*}*/
+.question{
+    color: #08ae9e;
+}

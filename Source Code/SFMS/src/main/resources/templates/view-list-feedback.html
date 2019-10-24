@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<html lang="en">
+
+<<<<<<< Updated upstream
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <meta name="description" content="">
+        <meta name="author" content="">
+        <title>Xem danh sách Feedback</title>
+        <!--Core style-->
+        <div th:replace="fragments/core-css"></div>
+        <!-- Bootstrap core JavaScript-->
+        <script src="vendor/jquery/jquery.min.js"></script>
+        <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+        <!-- Core plugin JavaScript-->
+        <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+        <script src="vendor/jquery-ui/jquery-ui.min.js"></script>
+        <!-- jQuery UI -->
+        <link href="vendor/jquery-ui/jquery-ui.min.css" rel="stylesheet" type="text/css">
+        <!-- custom style -->
+        <link href="css/view-list-feedback.css" rel="stylesheet" type="text/css">
+        <!-- custom script -->
+        <script src="js/conduct-feedback.js"></script>
+        <!-- dataTable -->
+        <link href="vendor/datatables/dataTables.bootstrap4.css" rel="stylesheet" type="text/css">
+        <link href="vendor/datatables/responsive.bootstrap4.min.css" rel="stylesheet" type="text/css">
+        <!--  <script src="http://pagination.js.org/dist/2.1.2/pagination.js"></script>-->
+    </head>
+
+    <body class="fixed-nav sticky-footer" id="page-top">
+    <!-- Navigation-->
+    <div th:insert="fragments/navbar-side"></div>
+        <div class="content-wrapper">
+            <div class="container-fluid">
+                <!-- Breadcrumbs-->
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item">
+                        <a href="index.html">Dashboard</a>
+                    </li>
+                    <li class="breadcrumb-item">
+                        <a href="#">Quản lý feedback</a>
+                    </li>
+                    <li class="breadcrumb-item active">Xem danh sách Feedbacks</li>
+                </ol>
+                <!-- div content -->
+               <!-- <div class="row">
+                    <div class="col-12">
+                        <h1>Xem báo cáo</h1>
+                    </div>
+                </div>-->
+                <div class="row">
+
+                    <!-- div feedback content col-sm-12 col-12 col-md-9 col-xl-9 col-lg-12-->
+                    <div class="col-12">
+=======
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>Xem danh sách Feedback</title>
+    <!-- custom style -->
+    <link th:href="@{/css/view-list-feedback.css}" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" th:href="@{/vendor/datatables/dataTables.bootstrap4.css}">
+    <div th:replace="fragments/core-css"></div>
+</head>
+>>>>>>> Stashed changes
+
+                      
+    <h3 class="feedback-title" style="text-align: left">
+                        Danh sách Feedbacks
+                    </h3>
+                    <div class="tab">
+                       <!-- <button class="tablinks" onclick="openCity(event, 'all')">Tất cả</button>
+                        <button class="tablinks" onclick="openCity(event, 'undone')">Chưa hoàn thành</button>-->
+                        <div class="tablinks-div">
+                            <button style="background-color: #08AE9E; color: #fff; " class=" btn-create-feedback btn">
+                                Tạo Feedback mới
+                            </button>
+                              &nbsp;&nbsp;&nbsp;                
+                            Trạng thái
+                            <select id="filter-status" style="height: 35px; border-radius: 0.25em" name="">
+                                <option value="all">Tất cả</option>
+                                <option value="undone">Chưa hoàn thành</option>
+                            </select>
+                            &nbsp;&nbsp;&nbsp;                
+                            Loại Feedback 
+                            <select id="filter-scope" style="height: 35px; border-radius: 0.25em" name="">
+                                <option value="dep">Phòng ban</option>
+                                <option value="major">Ngành</option>
+                                <option value="subject">Môn</option>
+                            </select>
+                            &nbsp;&nbsp;&nbsp;
+                            Sắp xếp
+                            <select style="height: 35px;border-radius: 0.25em" name="">
+                                <option>A-Z</option>
+                                <option>Z-A</option>
+                                <option>Tăng theo kỳ</option>
+                                <option>Giảm theo kỳ</option>
+                            </select>
+
+<<<<<<< Updated upstream
+                            <!--  Tìm 
+                              <input style="height: 35px; width: 150px; border-radius: 0.25em" type="" name="" value="" />
+                            -->
+                        </div>
+
+                    </div>
+                    <div class="col-sm-12 col-12 col-md-9 col-xl-9 col-lg-12 text-center feedback-content">
+
+                    </div>
+                    <form>
+                        <div class="feedback-page page-active">
+                            <div class="card-outer">
+                                <div class="card-block">
+                                    <br/>
+                                    <div id="dep" class="tab-content">
+                                        <table id="availableTemplate" style="width:90%" class="table table-responsive table-striped">
+                                            <thead>
+                                                <tr class="card-header">
+                                                    <th>#</th>
+                                                    <th>Phòng Ban</th>
+                                                    <th>Học Kỳ</th>
+                                                    <th>Tùy chọn</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td>1</td>
+                                                    <td>	
+                                                        Phòng Đào tạo
+                                                    </td>
+                                                    <td>
+                                                        Spring 2018
+                                                    </td>
+                                                    <td>
+                                                        <button class="btn btn-status-undone" formaction='conduct-feedback'>Hoàn thành ngay</button>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>2</td>
+                                                    <td>	
+                                                        Phòng Khảo thí
+                                                    </td>
+                                                    <td>
+                                                        Fall 2017
+                                                    </td>
+                                                    <td> <button class="btn btn-status-undone">Hoàn thành ngay</button></td>
+                                                </tr>
+                                                <tr>
+                                                    <td>3</td>
+                                                    <td>	
+
+                                                        Phòng IT
+                                                    </td>
+                                                    <td>
+                                                        Summer 2017
+                                                    </td>
+                                                    <td>
+                                                        <button class="btn btn-status-done">Xem chi tiết</button>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>4</td>
+                                                    <td>	
+                                                        Phòng Công tác Sinh viên
+                                                    </td>
+
+                                                    <td>Summer 2017</td>
+                                                    <td><button class="btn btn-status-done">Xem chi tiết</button></td>
+                                                </tr>
+                                                <tr>
+                                                    <td>5</td>
+                                                    <td>	
+                                                        Phòng Tuyển sinh
+                                                    </td>
+                                                    <td>
+                                                        Summer 2017
+                                                    </td>
+                                                    <td><button class="btn btn-status-done">Xem chi tiết</button></td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+
+                                    <div id="major" class="tab-content">
+                                        <h3>Tokyo</h3>
+                                        <p>Tokyo is the capital of Japan.</p>
+                                    </div>
+                                    <div id="subject" class="tab-content">
+                                        <table id="availableTemplate" style="width:90%" class="table table-responsive table-striped">
+                                            <thead>
+                                                <tr class="card-header">
+                                                    <th>#</th>
+                                                    <th>Môn</th>
+                                                    <th>Học Kỳ</th>
+                                                    <th>Giảng viên</th>
+                                                    <th>Tùy chọn</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td>1</td>
+                                                    <td>	
+                                                        OOP111 - Object-Oriented with Java
+                                                    </td>
+                                                    <td>
+                                                        Spring 2018
+                                                    </td>
+                                                    <td>Nguyen Huy Hung</td>
+                                                    <td>
+                                                        <button class="btn btn-status-undone">Hoàn thành ngay</button>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>2</td>
+                                                    <td>	
+                                                        OOP111 - Object-Oriented with Java
+                                                    </td>
+                                                    <td>
+                                                        Fall 2017
+                                                    </td>
+                                                    <td>Nguyen Trong Tai</td>
+                                                    <td> <button class="btn btn-status-undone">Hoàn thành ngay</button></td>
+                                                </tr>
+                                                <tr>
+                                                    <td>3</td>
+                                                    <td>	
+                                                        OOP111 - Object-Oriented with Java
+                                                    </td>
+                                                    <td>
+                                                        Summer 2017
+                                                    </td>
+                                                    <td>Than Van Su</td>
+                                                    <td>
+                                                        <button class="btn btn-status-done">Xem chi tiết</button>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>4</td>
+                                                    <td>	
+                                                        OOP111 - Object-Oriented with Java
+                                                    </td>
+                                                    <td>
+                                                        Summer 2017
+                                                    </td>
+                                                    <td>Kieu Trong Khanh</td>
+                                                    <td><button class="btn btn-status-done">Xem chi tiết</button></td>
+                                                </tr>
+                                                <tr>
+                                                    <td>5</td>
+                                                    <td>	
+                                                        PRM391 - Mobile Programming
+                                                    </td>
+                                                    <td>
+                                                        Summer 2017
+                                                    </td>
+                                                    <td>Pham Cong Thanh</td>
+                                                    <td><button class="btn btn-status-done">Xem chi tiết</button></td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+
+
+                                </div>                           
+                            </div>
+                        </div>
+                    </form>
+                
+
+                    </div>
+                    <!-- end div container -->
+                </div>
+=======
+            <!-- div feedback content col-sm-12 col-12 col-md-9 col-xl-9 col-lg-12-->
+            <div class="col-12">
+                <h3 class="feedback-title pull-left" style="text-align: left">
+                    Danh sách Feedbacks
+                </h3>
+                <a th:href="@{/select-template}" class="btn btn-raised-primary pull-right">Thêm feedback <i
+                        class="fa fa-plus"></i></a>
+>>>>>>> Stashed changes
+            </div>
+            <!-- /.container-fluid-->
+            <!-- /.content-wrapper-->
+            <div th:replace="fragments/footer"></div>
+        </div>
+<<<<<<< Updated upstream
+    </body>
+    <div th:replace="fragments/core-script"></div>
+    <!-- dataTable -->
+    <script src="vendor/datatables/jquery.dataTables.js"></script>
+    <script src="vendor/datatables/dataTables.bootstrap4.js"></script>
+    <script src="vendor/datatables/dataTables.responsive.min.js"></script>
+    <script src="vendor/datatables/responsive.bootstrap4.min.js"></script>
+
+    <!-- Custom javascript -->
+    <script src="js/view-report.js"></script>
+    <script src="js/view-feedback.js"></script>
+</html>
+=======
+        <div class="row">
+            <div class="col-12">
+                <div class="toggle-bar-wrapper">
+                    <!--<select id="filter-scope">-->
+                    <!--<option value="">Lọc loại feedback</option>-->
+                    <!--<option value="Phòng ban">Phòng ban</option>-->
+                    <!--<option value="Chuyên ngành">Chuyên ngành</option>-->
+                    <!--<option value="Môn học">Môn học</option>-->
+                    <!--<option value="Lớp">Lớp</option>-->
+                    <!--</select>-->
+                    <button class="btn-filter active" value="">Xem toàn bộ</button>
+                    <button class="btn-filter" value="Phòng ban">Phòng ban</button>
+                    <button class="btn-filter" value="Chuyên ngành">Chuyên ngành</button>
+                    <button class="btn-filter" value="Môn học">Môn học</button>
+                    <button class="btn-filter" value="Lớp">Lớp</button>
+                </div>
+                <div class="table-wrapper">
+                    <table id="tblFeedback" class="table table-bordered">
+                        <thead>
+                        <tr>
+                            <th>Tên feedback</th>
+                            <th>Kì báo cáo</th>
+                            <th>Thời gian bắt đầu</th>
+                            <th>Thời gian kết thúc</th>
+                            <th>Loại</th>
+                            <th>Đối tượng được báo cáo</th>
+                            <th>Tình trạng</th>
+                            <th></th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr th:each="feedback:${feedbackList}">
+                            <td th:text="${feedback.feedbackName}"></td>
+                            <td th:attr="data-sort=${feedback.semesterBySemesterId.startDate.getTime()}"
+                                th:text="${feedback.semesterBySemesterId.title}"></td>
+                            <td th:attr="data-sort=${feedback.createDate.getTime()}"
+                                th:text="${#dates.format(feedback.createDate, 'dd/MM/yyyy')}"></td>
+                            <td th:attr="data-sort=${feedback.endDate.getTime()}"
+                                th:text="${#dates.format(feedback.endDate, 'dd/MM/yyyy')}"></td>
+                            <td th:text="${feedback.typeByTypeId.description}"></td>
+                            <td>
+                                <div th:text="${feedback.departmentByDepartmentId!=null?feedback.departmentByDepartmentId.name:''}"
+                                     th:remove="tag"></div>
+                                <div th:text="${feedback.courseByCourseId!=null?feedback.courseByCourseId.name:''}"
+                                     th:remove="tag"></div>
+                                <div th:text="${feedback.majorByMajorId!=null?feedback.majorByMajorId.name:''}"
+                                     th:remove="tag"></div>
+                                <div th:text="${feedback.clazzByClazzId!=null?feedback.clazzByClazzId.className:''}"
+                                     th:remove="tag"></div>
+                            </td>
+                            <td>
+                                <p th:class="${feedback.isPublished?'text-success':'text-danger'}"
+                                   th:text="${feedback.isPublished?'Đã xuất bản':'Không xuất bản'}"></p>
+                            </td>
+                            <td>
+                                <a th:if="${#dates.createNow().getTime() > feedback.endDate.getTime()}"
+                                   th:href="@{'/reports/feedbacks/'+ ${feedback.id}}"><i class="fa fa-eye"></i> Xem báo
+                                    cáo</a>
+                                <p class="text-danger"
+                                   th:unless="${#dates.createNow().getTime() > feedback.endDate.getTime()}">Đang trong
+                                    quá trình thực hiện</p>
+                            </td>
+                        </tr>
+                        </tbody>
+                        <tfoot>
+                        <tr>
+                            <th>Tên feedback</th>
+                            <th>Kì báo cáo</th>
+                            <th>Thời gian bắt đầu</th>
+                            <th>Thời gian kết thúc</th>
+                            <th>Loại</th>
+                            <th>Đối tượng được báo cáo</th>
+                            <th>Tình trạng</th>
+                            <th></th>
+                        </tr>
+                        </tfoot>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- /.container-fluid-->
+    <!-- /.content-wrapper-->
+    <div th:replace="fragments/footer"></div>
+</div>
+</body>
+<div th:replace="fragments/core-script"></div>
+
+<!-- Custom javascript -->
+<script th:src="@{/vendor/datatables/jquery.dataTables.js}"></script>
+<script th:src="@{/vendor/datatables/dataTables.bootstrap4.js}"></script>
+<script th:src="@{/js/view-feedback.js}"></script>
+</html>
+>>>>>>> Stashed changes

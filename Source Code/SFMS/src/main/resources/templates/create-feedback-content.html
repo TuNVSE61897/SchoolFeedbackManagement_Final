@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
+    <meta name="description" content=""/>
+    <meta name="author" content=""/>
+    <title>Tạo nội dung feedback</title>
+    <div th:replace="fragments/core-css"></div>
+    <link rel="stylesheet" href="vendor/jquery-ui/jquery-ui.css">
+    <link rel="stylesheet" href="css/create-feedback-content.css">
+    <link href="css/progressbar-feedback.css" rel="stylesheet">
+</head>
+
+<body class="fixed-nav sticky-footer" id="page-top">
+<!--test-->
+<!--navigation-->
+<div th:replace="fragments/navbar-side"></div>
+<div class="content-wrapper">
+    <div class="container-fluid">
+        <!-- Breadcrumbs-->
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item">
+                <a href="#">Dashboard</a>
+            </li>
+            <li class="breadcrumb-item">
+                <a href="#">Quản lý feedback</a>
+            </li>
+            <li class="breadcrumb-item active">Tạo mới feedback</li>
+        </ol>
+        <!--header-->
+        <p hidden id="feedbackID" th:text="${session.id}"></p>
+        <div class="row">
+            <div class="col-12">
+                <h1>Tạo nội dung cho feedback</h1>
+            </div>
+        </div>
+        <!--end div header-->
+        <!--div form builder-->
+        <div class="row">
+            <div class="offset-1 col-8 question-list-container">
+                <div class="question-list-wrapper">
+
+                </div>
+            </div>
+            <div class="col-2 item-menu-container">
+                <div class="item-menu-wrapper">
+                    <ul class="item-list">
+                        <li class="item" id="radio-ele"><a href="#"><i class="fa fa-check-circle"></i> Nhóm radio</a>
+                        </li>
+                        <li class="item" id="checkbox-ele"><a href="#"><i class="fa fa-check-square"></i> Nhóm checkbox</a>
+                        </li>
+                        <li class="item" id="text-ele"><a href="#"><i class="fa fa-i-cursor "></i> Trường nhập văn
+                            bản(đơn dòng)</a></li>
+                        <li class="item" id="textarea-ele"><a href="#"><i class="fa fa-paragraph"></i> Trường nhập văn
+                            bản(đa dòng)</a></li>
+                        <li class="item" id="star-ele"><a href="#"><i class="fa fa-star"></i> Sao đánh giá</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="offset-1 col-8">
+                <div class="submit-container">
+                    <div class="submit-wrapper">
+                        <button class="btn btn-raised-primary" onclick="getQuestions()">Lưu nội dung</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--end div form builder-->
+    </div>
+    <!-- /.container-fluid-->
+    <!-- /.content-wrapper-->
+    <footer th:replace="fragments/footer"></footer>
+</div>
+</body>
+<div th:replace="fragments/core-script"></div>
+<script src="vendor/jquery-ui/jquery-ui.js" type="text/javascript"></script>
+<script src="js/create-feedback-content.js" type="text/javascript"></script>
+</html>

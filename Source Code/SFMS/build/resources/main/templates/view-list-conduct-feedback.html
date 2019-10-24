@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>Xem danh sách Feedback</title>
+    <div th:replace="fragments/core-css"></div>
+    <!-- custom style -->
+    <link th:href="@{/css/view-list-feedback.css}" rel="stylesheet" type="text/css">
+
+</head>
+
+<body class="fixed-nav sticky-footer" id="page-top">
+<!-- Navigation-->
+<div th:insert="fragments/navbar-side"></div>
+<div class="content-wrapper">
+    <div class="container-fluid">
+        <!-- Breadcrumbs-->
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item">
+                <a href="index.html">Dashboard</a>
+            </li>
+            <li class="breadcrumb-item">
+                <a href="#">Quản lý feedback</a>
+            </li>
+            <li class="breadcrumb-item active">Xem danh sách Feedbacks</li>
+        </ol>
+        <!-- div content -->
+        <!-- <div class="row">
+             <div class="col-12">
+                 <h1>Xem báo cáo</h1>
+             </div>
+         </div>-->
+        <div class="row">
+
+            <!-- div feedback content col-sm-12 col-12 col-md-9 col-xl-9 col-lg-12-->
+            <div class="col-12">
+                <h3 class="feedback-title" style="text-align: left">
+                    Danh sách Feedbacks
+                </h3>
+                <div class="tab">
+                    <!-- <button class="tablinks" onclick="openCity(event, 'all')">Tất cả</button>
+                     <button class="tablinks" onclick="openCity(event, 'undone')">Chưa hoàn thành</button>-->
+                    <div class="tablinks-div">
+                        &nbsp;&nbsp;&nbsp;
+                        Trạng thái
+                        <select id="filter-status" style="height: 35px; border-radius: 0.25em" name="">
+                            <option value="All">Tất cả</option>
+                            <option value="Undone">Chưa hoàn thành</option>
+                        </select>
+                        &nbsp;&nbsp;&nbsp;
+                        Loại Feedback
+                        <select id="filter-scope" style="height: 35px; border-radius: 0.25em" name="">
+                            <option value="All">Xem toàn bộ</option>
+                            <option value="Môn học">Môn học</option>
+                            <option value="Phòng ban">Phòng ban</option>
+                            <option value="Chuyên ngành">Ngành</option>
+                            <option value="Lớp">Lớp</option>
+                        </select>
+                        &nbsp;&nbsp;&nbsp;
+                        Sắp xếp
+                        <select id="filter-sort" style="height: 35px;border-radius: 0.25em" name="">
+                            <option value="Asc">A-Z</option>
+                            <option value="Des">Z-A</option>
+                            <option value="semAsc">Tăng theo kỳ</option>
+                            <option value="semDes">Giảm theo kỳ</option>
+                        </select>
+
+                        <!--  Tìm
+                          <input style="height: 35px; width: 150px; border-radius: 0.25em" type="" name="" value="" />
+                        -->
+                    </div>
+
+                </div>
+                <th:block th:if="${feedbacks.isEmpty()}">
+                    <div class="empty-notify-holder">
+                        <p>Bạn không có feedback nào và lịch sử feedback đang trống</p>
+                    </div>
+                </th:block>
+                <th:block th:unless="${feedbacks.isEmpty()}" th:with="currDate=${#dates.createNow()}">
+                    <div class="table-wrapper">
+                        <table id="tblFeedback" class="table table-bordered">
+                            <col style="width:25%">
+                            <col style="width:15%">
+                            <col style="width:15%">
+                            <col style="width:15%">
+                            <col style="width:15%">
+                            <col style="width:15%">
+                            <thead>
+                            <tr>
+                                <th>Tên</th>
+                                <th>Kì học</th>
+                                <th>Ngày bắt đầu</th>
+                                <th>Ngày kết thúc</th>
+                                <th>Loại Feedback</th>
+                                <th>Trạng thái</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <th:block th:each="feedback:${feedbacks}">
+                                <tr class="feedback-table-row"
+                                    th:attr="data-scope=${feedback.feedbackByFeedbackId.typeByTypeId.description}, data-status=${feedback.conducted}?'Done':'Undone'">
+                                    <td th:text="${feedback.feedbackByFeedbackId.feedbackName}"></td>
+                                    <td th:text="${feedback.feedbackByFeedbackId.semesterBySemesterId.title}"
+                                        th:attr="data-start-date=${feedback.feedbackByFeedbackId.semesterBySemesterId.startDate.getTime()}"></td>
+                                    <td th:text="${#dates.format(feedback.feedbackByFeedbackId.startDate, 'dd-MM-yyyy')}"></td>
+                                    <td th:text="${#dates.format(feedback.feedbackByFeedbackId.endDate, 'dd-MM-yyyy')}"></td>
+                                    <td th:text="${feedback.feedbackByFeedbackId.typeByTypeId.description}"></td>
+                                    <td class="text-success" th:if="${feedback.conducted}">Đã hoàn thành</td>
+                                    <!--switch case-->
+                                    <td th:if="${!feedback.conducted
+                                    && (currDate.getTime() < feedback.feedbackByFeedbackId.endDate.getTime())
+                                    && (currDate.getTime() > feedback.feedbackByFeedbackId.startDate.getTime())}">
+                                        <a class="btn btn-raised-primary"
+                                           th:href="@{/conduct-feedback/__${feedback.feedbackByFeedbackId.id}__}">Làm
+                                            feedback</a>
+                                    </td>
+                                    <td class="text-danger"
+                                        th:if="${!feedback.conducted
+                                    && ((currDate.getTime() > feedback.feedbackByFeedbackId.endDate.getTime())
+                                    || (currDate.getTime() < feedback.feedbackByFeedbackId.startDate.getTime()))}">
+                                        Feedback đã quá hạn hoặc chưa bắt đầu
+                                    </td>
+                                    <!--end switch case-->
+                                </tr>
+                            </th:block>
+                            </tbody>
+                        </table>
+                    </div>
+                </th:block>
+            </div>
+            <!-- end div container -->
+        </div>
+    </div>
+    <!-- /.container-fluid-->
+    <!-- /.content-wrapper-->
+    <div th:replace="fragments/footer"></div>
+</div>
+</body>
+<div th:replace="fragments/core-script"></div>
+
+<!-- Custom javascript -->
+<script th:src="@{/js/view-feedback.js}"></script>
+</html>

@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <meta name="ctx" th:content="${#httpServletRequest.getContextPath()}"/>
+    <title>Chọn template</title>
+    <div th:replace="fragments/core-css"></div>
+    <!-- dataTable -->
+    <link th:href="@{/vendor/datatables/dataTables.bootstrap4.css}" rel="stylesheet" type="text/css">
+    <link th:href="@{/vendor/datatables/responsive.bootstrap4.min.css}" rel="stylesheet" type="text/css">
+    <link th:href="@{/vendor/datatables/select.dataTables.min.css}" rel="stylesheet" type="text/css">
+    <!-- Custom style -->
+    <link th:href="@{/css/select-template.css}" rel="stylesheet">
+    <link th:href="@{/css/progressbar-feedback.css}" rel="stylesheet">
+</head>
+
+<body class="fixed-nav sticky-footer" id="page-top">
+<!-- Navigation-->
+<!--test-->
+<div th:replace="fragments/navbar-side"></div>
+<div class="content-wrapper">
+    <div class="container-fluid">
+        <!-- Breadcrumbs-->
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item">
+                <a href="index.html">Dashboard</a>
+            </li>
+            <li class="breadcrumb-item">
+                <a href="#">Quản lý feedback</a>
+            </li>
+            <li class="breadcrumb-item active">Tạo mới feedback</li>
+        </ol>
+        <!-- div content -->
+        <div class="row justify-content-center" style="margin-top:20px;">
+            <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 text-center justify-content-center">
+                <h3>Chọn từ một template có sẵn</h3>
+            </div>
+        </div>
+        <div class="row justify-content-center search-container">
+            <div class="col-10 col-sm-10 col-md-4 col-lg-4 col-xl-4 search-wrapper">
+                <input class="text" placeholder="Tìm kiếm template">
+                <button><i class="fa fa-fw fa-search"></i> </button>
+            </div>
+        </div>
+        <div class="row template-container offset-1">
+                <div class="col-10 col-sm-10 col-md-4 col-lg-3 col-xl-3 template-thumbnail">
+                    <div class="create-new-container">
+                        <div class="create-new-wrapper text-center">
+                            <b>Tạo feedback trống</b>
+                            <hr>
+                            <button class="btn btn-raised-primary btn-create-new" data-toggle="modal" data-target="#modalCreateNew"><i class="fa fa-fw fa-plus"></i> </button>
+                        </div>
+                    </div>
+                </div>
+            <th:block th:unless="${#lists.isEmpty(templates)}">
+                <th:block th:each="index:${#numbers.sequence(0,6)}"> <!-- HARD CODE TO DO -->
+                    <div class="col-10 col-sm-10 col-md-4 col-lg-3 col-xl-3 template-thumbnail">
+                        <div class="thumbnail-content">
+
+                            <b><p th:text="${templates.get(index).templateName}" th:remove="tag"></p> </b>
+                            <p th:text="${templates.get(index).templateDes}"></p>
+                        </div>
+                        <div class="thumbnail-action">
+                            <input hidden id='templateID' type="text" th:attr="value=${templates.get(index).id}">
+                            <button class="btn btn-secondary btn-preview" data-target="#modalTemplate" data-toggle="modal">Xem thử
+                            </button>
+                            <a th:href="@{'/template/create/' + ${templates.get(index).id}}" target="_parent">
+                            <button class="btn btn-raised-primary btn-select-feedback">Tiếp tục</button>
+                            </a>
+                        </div>
+                    </div>
+                </th:block>
+            </th:block>
+
+           <!--     <div class="col-10 col-sm-10 col-md-4 col-lg-3 col-xl-3 template-thumbnail">
+                    <div class="thumbnail-content">
+                        <b>Feedback giáo viên tiếng nhật</b>
+                        <p>Feedback này dành để đánh giá các giáo viên tiếng anh về khả năng nói, etc...</p>
+                    </div>
+                    <div class="thumbnail-action ">
+                        <button class="btn btn-secondary" data-toggle="modal" data-target="#modalTemplate">Xem thử
+                        </button>
+                        <button class="btn btn-raised-primary btn-select-feedback">Tiếp tục</button>
+                    </div>
+                </div>
+                <div class="col-10 col-sm-10 col-md-4 col-lg-3 col-xl-3 template-thumbnail">
+                    <div class="thumbnail-content">
+                        <b>Feedback giáo viên tiếng nhật</b>
+                        <p>Feedback này dành để đánh giá các giáo viên tiếng anh về khả năng nói, etc...</p>
+                    </div>
+                    <div class="thumbnail-action ">
+                        <button class="btn btn-secondary" data-toggle="modal" data-target="#modalTemplate">Xem thử
+                        </button>
+                        <button class="btn btn-raised-primary btn-select-feedback">Tiếp tục</button>
+                    </div>
+                </div>
+                <div class="col-10 col-sm-10 col-md-4 col-lg-3 col-xl-3 template-thumbnail">
+                    <div class="thumbnail-content">
+                        <b>Feedback giáo viên tiếng nhật</b>
+                        <p>Feedback này dành để đánh giá các giáo viên tiếng anh về khả năng nói, etc...</p>
+                    </div>
+                    <div class="thumbnail-action ">
+                        <button class="btn btn-secondary" data-toggle="modal" data-target="#modalTemplate">Xem thử
+                        </button>
+                        <button class="btn btn-raised-primary btn-select-feedback">Tiếp tục</button>
+                    </div>
+                </div>
+                <div class="col-10 col-sm-10 col-md-4 col-lg-3 col-xl-3 template-thumbnail">
+                    <div class="thumbnail-content">
+                        <b>Feedback giáo viên tiếng nhật</b>
+                        <p>Feedback này dành để đánh giá các giáo viên tiếng anh về khả năng nói, etc...</p>
+                    </div>
+                    <div class="thumbnail-action ">
+                        <button class="btn btn-secondary" data-toggle="modal" data-target="#modalTemplate">Xem thử
+                        </button>
+                        <button class="btn btn-raised-primary btn-select-feedback">Tiếp tục</button>
+                    </div>
+                </div>
+                <div class="col-10 col-sm-10 col-md-4 col-lg-3 col-xl-3 template-thumbnail">
+                    <div class="thumbnail-content">
+                        <b>Feedback giáo viên tiếng nhật</b>
+                        <p>Feedback này dành để đánh giá các giáo viên tiếng anh về khả năng nói, etc...</p>
+                    </div>
+                    <div class="thumbnail-action ">
+                        <button class="btn btn-secondary" data-toggle="modal" data-target="#modalTemplate">Xem thử
+                        </button>
+                        <button class="btn btn-raised-primary btn-select-feedback">Tiếp tục</button>
+                    </div>
+                </div>
+                <div class="col-10 col-sm-10 col-md-4 col-lg-3 col-xl-3 template-thumbnail">
+                    <div class="thumbnail-content">
+                        <b>Feedback giáo viên tiếng nhật</b>
+                        <p>Feedback này dành để đánh giá các giáo viên tiếng anh về khả năng nói, etc...</p>
+                    </div>
+                    <div class="thumbnail-action ">
+                        <button class="btn btn-secondary" data-toggle="modal" data-target="#modalTemplate">Xem thử</button>
+                        <button class="btn btn-raised-primary btn-select-feedback">Tiếp tục</button>
+                    </div>
+                </div>-->
+        </div>
+        <div class="row col-12 justify-content-center">
+            <a href="#">Xem thêm</a>
+        </div>
+    </div>
+    <!-- end div container-fluid -->
+    <!-- Modal Create New -->
+    <div id="modalCreateNew" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <form th:action="@{/modify-feedback/create}" method="post">
+                        <div class="form-group">
+                            <label class="control-label">Tên feedback</label>
+                            <input type="text" name="title" class="form-control" placeholder="Tên feedback">
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label">Mô tả</label>
+                            <textarea name="description" class="form-control" placeholder="Mô tả"></textarea>
+                        </div>
+                        <div class="form-group">
+                            <!--href="create-feedback-content"-->
+                            <button class="btn btn-submit" id="btnSubmit">Tiếp tục</button>
+                            <button class="btn btn-secondary" data-dismiss="modal">Đóng</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Modal Template-->
+    <div id="modalTemplate" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+            <!-- Modal content-->
+            <div class="modal-content">
+           <!--     <div class="modal-header">
+                    <h3>Feedback cho giáo viên tiếng anh</h3>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>-->
+                <div class="modal-body">
+                    <!-- Tab panes -->
+                    <div class="container" id = "modalTemplateContent">
+                      <!--  <h4 class="question">1. Tốc độ giang dạy của giáo viên như thế nào?</h4>
+                        <div class="form-group">
+                            <div class="form-check">
+                                <label class="form-check-label">
+                                    <input class="form-check-input" type="radio" name="answer-2"/> Đã đầy đủ và có
+                                    những kiến thức thực tế bổ ích
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <label class="form-check-label">
+                                    <input class="form-check-input" type="radio" name="answer-2"/> Đã đầy đủ nhưng
+                                    chưa có kiến thức thực tế nhiều
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <label class="form-check-label">
+                                    <input class="form-check-input" type="radio" name="answer-2"/> Chưa đầy đủ
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <label class="form-check-label">
+                                    <input class="form-check-input" type="radio" name="answer-2"/> Giáo viên bỏ và
+                                    dạy lướt qua nhiều phần quan trọng
+                                </label>
+                            </div>
+                        </div>
+                        <h4 class="question">2. Tốc độ?</h4>
+                        <div class="form-group">
+                            <div class="form-check">
+                                <label class="form-check-label">
+                                    <input class="form-check-input" type="radio" name="answer-1"/> Quá nhanh
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <label class="form-check-label">
+                                    <input class="form-check-input" type="radio" name="answer-1"/> Nhanh
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <label class="form-check-label">
+                                    <input class="form-check-input" type="radio" name="answer-1"/> Vừa
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <label class="form-check-label">
+                                    <input class="form-check-input" type="radio" name="answer-1"/> Hơi chậm
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <label class="form-check-label">
+                                    <input class="form-check-input" type="radio" name="answer-1"/> Chậm
+                                </label>
+                            </div>
+                        </div>
+                        <h4 class="question">2. Tốc độ?</h4>
+                        <div class="form-group">
+                            <div class="form-check">
+                                <label class="form-check-label">
+                                    <input class="form-check-input" type="radio" name="answer-1"/> Quá nhanh
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <label class="form-check-label">
+                                    <input class="form-check-input" type="radio" name="answer-1"/> Nhanh
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <label class="form-check-label">
+                                    <input class="form-check-input" type="radio" name="answer-1"/> Vừa
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <label class="form-check-label">
+                                    <input class="form-check-input" type="radio" name="answer-1"/> Hơi chậm
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <label class="form-check-label">
+                                    <input class="form-check-input" type="radio" name="answer-1"/> Chậm
+                                </label>
+                            </div>
+                        </div>
+                        <h4 class="question">2. Tốc độ?</h4>
+                        <div class="form-group">
+                            <div class="form-check">
+                                <label class="form-check-label">
+                                    <input class="form-check-input" type="radio" name="answer-1"/> Quá nhanh
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <label class="form-check-label">
+                                    <input class="form-check-input" type="radio" name="answer-1"/> Nhanh
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <label class="form-check-label">
+                                    <input class="form-check-input" type="radio" name="answer-1"/> Vừa
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <label class="form-check-label">
+                                    <input class="form-check-input" type="radio" name="answer-1"/> Hơi chậm
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <label class="form-check-label">
+                                    <input class="form-check-input" type="radio" name="answer-1"/> Chậm
+                                </label>
+                            </div>
+                        </div>
+                        <h4 class="question">2. Tốc độ?</h4>
+                        <div class="form-group">
+                            <div class="form-check">
+                                <label class="form-check-label">
+                                    <input class="form-check-input" type="radio" name="answer-1"/> Quá nhanh
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <label class="form-check-label">
+                                    <input class="form-check-input" type="radio" name="answer-1"/> Nhanh
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <label class="form-check-label">
+                                    <input class="form-check-input" type="radio" name="answer-1"/> Vừa
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <label class="form-check-label">
+                                    <input class="form-check-input" type="radio" name="answer-1"/> Hơi chậm
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <label class="form-check-label">
+                                    <input class="form-check-input" type="radio" name="answer-1"/> Chậm
+                                </label>
+                            </div>
+                        </div>
+                        <h4 class="question">2. Tốc độ?</h4>
+                        <div class="form-group">
+                            <div class="form-check">
+                                <label class="form-check-label">
+                                    <input class="form-check-input" type="radio" name="answer-1"/> Quá nhanh
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <label class="form-check-label">
+                                    <input class="form-check-input" type="radio" name="answer-1"/> Nhanh
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <label class="form-check-label">
+                                    <input class="form-check-input" type="radio" name="answer-1"/> Vừa
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <label class="form-check-label">
+                                    <input class="form-check-input" type="radio" name="answer-1"/> Hơi chậm
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <label class="form-check-label">
+                                    <input class="form-check-input" type="radio" name="answer-1"/> Chậm
+                                </label>
+                            </div>
+                        </div>
+                        <h4 class="question">2. Tốc độ?</h4>
+                        <div class="form-group">
+                            <div class="form-check">
+                                <label class="form-check-label">
+                                    <input class="form-check-input" type="radio" name="answer-1"/> Quá nhanh
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <label class="form-check-label">
+                                    <input class="form-check-input" type="radio" name="answer-1"/> Nhanh
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <label class="form-check-label">
+                                    <input class="form-check-input" type="radio" name="answer-1"/> Vừa
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <label class="form-check-label">
+                                    <input class="form-check-input" type="radio" name="answer-1"/> Hơi chậm
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <label class="form-check-label">
+                                    <input class="form-check-input" type="radio" name="answer-1"/> Chậm
+                                </label>
+                            </div>
+                        </div>-->
+                    </div>
+                </div>
+
+                <div class="modal-footer">
+                    <form th:action="@{/template/create}" method="post">
+                        <div class="form-group" id="modalTemplateFooter">
+                         <!--   <input hidden type="text" name="templateId" class="form-control" value="34">-->
+                        </div>
+               <!--     <div class="help-tip">
+                        <p>Feedback này dành để đánh giá các giáo viên tiếng anh về khả năng nói, etc...</p>
+                    </div>-->
+                   <!-- <a th:href="@{/template/create}" target="_parent">-->
+                        <div class="form-group">
+                        <button class="btn btn-raised-primary btn-submit">Chọn template này</button>
+                   <!-- </a>-->
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Đóng</button>
+                        </div>
+                    </form>
+                </div>
+
+            </div>
+            <!--end div modal content-->
+        </div>
+    </div>
+</div>
+<!--footer-->
+<div th:replace="fragments/footer"></div>
+</div>
+</body>
+<div th:replace="fragments/core-script"></div>
+<!-- dataTable -->
+<script th:src="@{/vendor/datatables/jquery.dataTables.js}"></script>
+<script th:src="@{/vendor/datatables/dataTables.bootstrap4.js}"></script>
+<script th:src="@{/vendor/datatables/dataTables.responsive.min.js}"></script>
+<script th:src="@{/vendor/datatables/responsive.bootstrap4.min.js}"></script>
+<script th:src="@{/vendor/datatables/dataTables.select.min.js}"></script>
+
+<!-- Custom javascript -->
+<script th:src="@{/js/select-template.js}"></script>
+
+</html>

@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<html lang="en">
+
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <meta name="description" content="">
+        <meta name="author" content="">
+        <title>Xem báo cáo</title>
+        <!--Core style-->
+        <div th:replace="fragments/core-css"></div>
+        <!-- Bootstrap core JavaScript-->
+        <script src="vendor/jquery/jquery.min.js"></script>
+        <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+        <!-- Core plugin JavaScript-->
+        <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+        <script src="vendor/jquery-ui/jquery-ui.min.js"></script>
+        <!-- jQuery UI -->
+        <link href="vendor/jquery-ui/jquery-ui.min.css" rel="stylesheet" type="text/css">
+        <!-- custom style -->
+        <link href="css/view-report.css" rel="stylesheet" type="text/css">
+        <!-- custom script -->
+        <script src="js/view-report.js"></script>
+        <!-- dataTable -->
+        <link href="vendor/datatables/dataTables.bootstrap4.css" rel="stylesheet" type="text/css">
+        <link href="vendor/datatables/responsive.bootstrap4.min.css" rel="stylesheet" type="text/css">
+        <!--  <script src="http://pagination.js.org/dist/2.1.2/pagination.js"></script>-->
+
+        <!-- Load c3.css -->
+        <link href="c3-0.4.18/c3.css" rel="stylesheet">
+
+        <!-- Load d3.js and c3.js -->
+        <script src="https://d3js.org/d3.v3.js"></script>
+        <script src="c3-0.4.18/c3.min.js"></script>
+    </head>
+
+    <body class="fixed-nav sticky-footer" id="page-top">
+    <!-- Navigation-->
+    <div th:insert="fragments/navbar-side"></div>
+        <div class="content-wrapper">
+            <div class="container-fluid">
+                <!-- Breadcrumbs-->
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item">
+                        <a href="index.html">Dashboard</a>
+                    </li>
+                    <li class="breadcrumb-item">
+                        <a href="#">Quản lý feedback</a>
+                    </li>
+                    <li class="breadcrumb-item active">Xem báo cáo</li>
+                </ol>
+                <!-- div content -->
+                <!-- <div class="row">
+                     <div class="col-12">
+                         <h1>Xem báo cáo</h1>
+                     </div>
+                 </div>-->
+                <div class="row">
+
+                    <!-- div feedback content col-sm-12 col-12 col-md-9 col-xl-9 col-lg-12-->
+                    <div class="col-12">
+
+                        <h3 class="feedback-title" style="text-align: left">
+                            Báo cáo Feedbacks - Phòng IT
+                        </h3>
+                        <div class="tab">
+                            <!-- <button class="tablinks" onclick="openCity(event, 'London')">Tất cả</button>
+                             <button class="tablinks" onclick="openCity(event, 'Paris')">Chưa hoàn thành</button>-->
+                            <div class="tablinks-div">
+                                Từ học kỳ
+                                <select style="height: 35px; border-radius: 0.25em" name="">
+                                    <option>Spring 2018</option>
+                                    <option>Fall 2017</option>
+                                    <option>Summer 2017</option>
+                                    <option>Spring 2017</option>
+                                    <option>Fall 2016</option>
+                                    <option>Summer 2016</option>
+                                    <option>Spring 2016</option>
+                                </select>
+                                &nbsp;&nbsp;&nbsp;
+                                Đến học kỳ
+                                <select style="height: 35px;border-radius: 0.25em" name="">
+                                    <option>Spring 2018</option>
+                                    <option>Fall 2017</option>
+                                    <option>Summer 2017</option>
+                                    <option>Spring 2017</option>
+                                    <option>Fall 2016</option>
+                                    <option>Summer 2016</option>
+                                    <option>Spring 2016</option>
+                                </select>
+                                &nbsp;&nbsp;&nbsp;
+                                <!--     Tìm 
+                                     <input style="height: 35px; width: 150px; border-radius: 0.25em" type="" name="" value="" />-->
+                            </div>
+
+                        </div>
+                        <div class="col-sm-12 col-12 col-md-9 col-xl-9 col-lg-12 text-center feedback-content">
+
+                        </div>
+                        <form>
+                            <div class="feedback-page page-active">
+                                <div class="card-outer">
+                                    <br/>
+                                    <div class="card-block">
+                                        <div id="report-detail-chart"></div>
+                                    </div>
+                                </div>                           
+                            </div>
+                        </form>
+
+
+                    </div>
+                    <!-- end div container -->
+                </div>
+            </div>
+            <!-- /.container-fluid-->
+            <!-- /.content-wrapper-->
+            <div th:replace="fragments/footer"></div>
+        </div>
+    </body>
+    <div th:replace="fragments/core-script"></div>
+    <!-- dataTable -->
+    <script src="vendor/datatables/jquery.dataTables.js"></script>
+    <script src="vendor/datatables/dataTables.bootstrap4.js"></script>
+    <script src="vendor/datatables/dataTables.responsive.min.js"></script>
+    <script src="vendor/datatables/responsive.bootstrap4.min.js"></script>
+    <!-- Custom scripts for all pages-->
+    <script src="js/sb-admin.min.js"></script>
+    <!-- Custom javascript -->
+    <script src="js/select-template.js"></script>
+    <script type="text/javascript">
+        function callAjax(elementId, value) {
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function () {
+                if (this.readyState == 4 && this.status == 200) {
+                    window.open("view-report-semester.html");
+                }
+            };
+            xhttp.open("GET", "view-report-semester.html", true);
+            xhttp.send();
+        }
+
+        $(document).ready(function () {
+            var chart = c3.generate({
+                bindto: '#report-detail-chart',
+                data: {
+                    onclick: function (d, element) {
+                        window.open("view-report-semester");
+                    },
+                    columns: [
+                        ['Chất lượng', 1.2, 2.5, 3.1, 4.1, 3.8, 3, 4],
+                        ['Thái độ', 2.2, 3.1, 2.1, 3.1, 4.8, 4, 3],
+                        ['Trung bình', 1.7, 2.8, 2.6, 3.6, 4.3, 3.5, 3.5]
+                    ],
+                    type: 'bar',
+                    types: {
+                       'Trung bình': 'line'
+                    }
+                },
+                bar: {
+                    width: {
+                        ratio: 0.5 // this makes bar width 50% of length between ticks
+                    }
+                },
+                size: {
+                    width: 1000,
+                    height:500
+                },
+                axis: {
+                    x: {
+                        type: 'category',
+                        categories: ['Spring 2016', 'Summer 2016', 'Fall 2016', 'Spring 2017', 'Summer 2017', 'Fall 2017', 'Spring 2018']
+                    }
+                },
+                /*  color: {
+                 pattern: ['#08AE9E']
+                 }*/
+            });
+        });
+    </script>
+</html>

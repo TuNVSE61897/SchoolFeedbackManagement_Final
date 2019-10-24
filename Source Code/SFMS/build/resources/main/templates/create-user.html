@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>Create User Site</title>
+    <!-- Bootstrap core CSS-->
+    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Custom fonts for this template-->
+    <link href="vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <!-- dataTable -->
+    <link href="vendor/datatables/dataTables.bootstrap4.css" rel="stylesheet" type="text/css">
+    <link href="vendor/datatables/responsive.bootstrap4.min.css" rel="stylesheet" type="text/css">
+    <!-- Custom styles for this template-->
+    <link href="css/sb-admin.css" rel="stylesheet">
+    <link href="css/nav-style.css" rel="stylesheet">
+
+    <!-- Custom style -->
+    <link href="css/modify-user-details.css" rel="stylesheet">
+    <!-- Scipt Custom -->
+
+
+</head>
+
+<body class="fixed-nav sticky-footer" id="page-top">
+<!-- Navigation bar left side-->
+<div th:insert="fragments/navbar-side"></div>
+<div class="content-wrapper">
+    <div class="container-fluid">
+        <!-- Breadcrumbs-->
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item">
+                <a href="index.html">Dashboard</a>
+            </li>
+            <li class="breadcrumb-item">
+                <a href="#">Quản lý tài khoản</a>
+            </li>
+            <li class="breadcrumb-item active">Tạo mới tài khoản</li>
+        </ol>
+        <h5 class="overview-title">Vui lòng kiểm tra & hoàn tất những thông tin sau</h5>
+        <br>
+        <div class="row">
+            <div class="col-md-2"></div>
+            <div class="col-md-8">
+                <div class="row form-row">
+                    <div class="col-md-4">
+                        <label>Tên đăng nhập: </label>
+                        <div class="input-group input-group-sm">
+                            <input name="" type="text" class="form-control" required="true"/>
+                        </div>
+                    </div>
+                    <div class="col-md-1"></div>
+                    <div class="col-md-4">
+                        <label>Mật khẩu: </label>
+                        <div class="input-group input-group-sm">
+                            <input name="" type="password" class="form-control" required="true"/>
+                        </div>
+                    </div>
+                </div>
+                <div class="row form-row">
+                    <div class="col-md-10">
+                        <label>Email: </label>
+                        <div class="input-group input-group-sm">
+                            <input name="" type="email" class="form-control" required="true"
+                                   placeholder="Ex: thuanthm@fpt.edu.vn"/>
+                        </div>
+                    </div>
+                </div>
+                <br>
+                <div class="row form-row">
+                    <div class="col-md-5">
+                        <label>Họ: </label>
+                        <div class="input-group input-group-sm">
+                            <input name="" type="text" class="form-control" required="true"
+                                   placeholder="Ex: Thái Tiến"/>
+                        </div>
+                    </div>
+                    <div class="col-md-1"></div>
+                    <div class="col-md-4">
+                        <label>Tên: </label>
+                        <div class="input-group input-group-sm">
+                            <input name="" type="text" class="form-control" required="true" placeholder="Ex: Hoòng"/>
+                        </div>
+                    </div>
+                </div>
+                <br>
+                <div class="row form-row">
+                    <div class="col-md-5">
+                        <label>Phân quyền: </label>
+                        <div class="input-group input-group-sm">
+                            <input list="list-roles" class="form-control" required="true"/>
+                        </div>
+                        <datalist id="list-roles">
+                            <option selected>Học sinh</option>
+                            <option selected>Giảng viên</option>
+                            <option selected>Nhân viên</option>
+                            <option selected>Trưởng ban</option>
+                        </datalist>
+                    </div>
+                    <div class="col-md-1"></div>
+                    <div class="col-md-5">
+                        <br>
+                        <label>Giới tính: </label>
+                        <label class="radio-inline"><input type="radio" name="optradio">Nam</label>
+                        <label class="radio-inline"><input type="radio" name="optradio">Nữ</label>
+                    </div>
+                </div>
+                <br>
+                <div class="row form-row">
+                    <div class="col-md-4">
+                        <label>Phòng ban: </label>
+                        <div class="input-group input-group-sm">
+                            <input list="list-departments" class="form-control"/>
+                        </div>
+                        <datalist id="list-departments">
+                            <option selected>Phòng Đào tạo</option>
+                            <option>Phòng Khảo thí</option>
+                            <option>Phòng CTSV</option>
+                            <option>Phòng IT</option>
+                        </datalist>
+                    </div>
+                    <div class="col-md-1"></div>
+                    <div class="col-md-4">
+                        <label>Chuyên ngành: </label>
+                        <div class="input-group input-group-sm">
+                            <input list="list-majors" class="form-control"/>
+                        </div>
+                        <datalist id="list-majors">
+                            <option selected>SE</option>
+                            <option selected>SB</option>
+                            <option selected>IA</option>
+                            <option selected>JP</option>
+                        </datalist>
+                    </div>
+                </div>
+                <br>
+                <div class="row form-row">
+                    <div class="col-md-5">
+                        <label>Trạng thái tài khoản </label>
+                        <input class="btn active btn-check-target" type="button" name="target"
+                               value="Kích hoạt"/>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-1"></div>
+        </div>
+    </div>
+    <!-- div content -->
+    <!-- end div main content -->
+    <div class="row justify-content-center" style="margin-top: 20px" align="center">
+        <div class="col-12 col-xs-12 col-md-12 col-lg-12 col-xl-12">
+            <button class="btn btn-new">
+                <li class="fa fa-save"></li>
+                Lưu và tiếp tục
+            </button>
+            <button class="btn btn-new">
+                <li class="fa fa-save"></li>
+                Lưu và quay về danh sách
+            </button>
+            <button class="btn btn-cancel">
+                <li class="fa fa-trash"></li>
+                Hủy
+            </button>
+        </div>
+    </div>
+    <!-- end div container-fluid -->
+</div>
+<!-- end div content-wrapper -->
+<footer th:replace="fragments/footer"></footer>
+</div>
+</body>
+<!-- Bootstrap core JavaScript-->
+<script src="vendor/jquery/jquery.min.js"></script>
+<script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+<!-- Core plugin JavaScript-->
+<script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+<!-- dataTable -->
+<script src="vendor/datatables/jquery.dataTables.js"></script>
+<script src="vendor/datatables/dataTables.bootstrap4.js"></script>
+<script src="vendor/datatables/dataTables.responsive.min.js"></script>
+<script src="vendor/datatables/responsive.bootstrap4.min.js"></script>
+
+<!-- Custom scripts for all pages-->
+<script src="js/sb-admin.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script>
+    $("#switch button").on("click", function () {
+        $(this).parents("#switch").find("button").removeClass("activebtn inactivebtn").addClass("inactivebtn");
+        ;
+        $(this).removeClass("inactivebtn").addClass("activebtn");
+    });
+</script>
+<script src="js/modify-user-details.js"></script>
+</html>

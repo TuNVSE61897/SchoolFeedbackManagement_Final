@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>Xem kết quả báo cáo theo kỳ</title>
+    <div th:replace="fragments/core-css"></div>
+    <link rel="stylesheet" th:href="@{/css/view-report-semester.css}">
+</head>
+
+<body class="fixed-nav sticky-footer" id="page-top">
+<!-- Navigation-->
+<nav th:replace="fragments/navbar-side"></nav>
+<div class="content-wrapper">
+    <div class="container-fluid">
+        <!-- Breadcrumbs-->
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item">
+                <a href="#">Dashboard</a>
+            </li>
+            <li class="breadcrumb-item">
+                <a href="#">Quản lý feedback</a>
+            </li>
+            <li class="breadcrumb-item active">Thông tin chi tiết feedback</li>
+        </ol>
+
+        <!-- Div header && Breadcrumb -->
+        <div class="row">
+            <div class="col-8 text-center offset-2">
+                <h3 class="feedback-title">Kết quả feedback <span class="target-name"
+                                                                  th:text="${report.type+' '+report.target+' - '+report.semester}"></span>
+                </h3>
+                <hr style="border: 2px dashed #08AE9E; width:50%">
+                <h3><b>Điểm trung bình: <span class="point-text"
+                                              th:text="${#numbers.formatDecimal(report.averageSemPoint,0,1) + '/5'}"></span></b>
+                </h3>
+            </div>
+        </div>
+        <!-- End div header && breadcrumb -->
+        <!-- Div content -->
+        <div class="row">
+            <div class="col-8 offset-2">
+                <th:block th:unless="${report == null}">
+                    <div class="card criteria-card" th:each="criteria:${report.criteriaReportModelList}">
+                        <div class="card-header">
+                            <h4 th:text="${criteria.criteriaName+'-'+#numbers.formatDecimal(criteria.averageCriteriaPoint,0,1)+'/5'}"></h4>
+                        </div>
+                        <div class="card-block question-card yn-question"
+                             th:each="ynQuestion:${criteria.ynQuestionReportModels}">
+                            <p><b>Lời khuyên: </b>
+                            <div th:text="${ynQuestion.suggestion}" th:remove="tag"></div>
+                            </p>
+                            <p><b th:text="${ynQuestion.questionContent}"></b><br>
+                            <div th:text="${ynQuestion.responseCount}" th:remove="tag"></div>
+                            </p>
+                            <div th:id="'chart-'+${#dates.createNow().getTime()}"
+                                 class="piechart"></div>
+                            <div th:attr="data-option-content=${ynAnswer.optionContent}, data-selected-count=${ynAnswer.selectedCount}, style=${ynAnswer.optionPoint==0}?'display:block':'display:none'"
+                                 class="chart-data" th:each="ynAnswer:${ynQuestion.ynAnswerReportModelList}">
+                                <th:block th:if="${ynAnswer.optionPoint == 0}">
+                                    <div class="answer-content-container" style="display: none;">
+                                        <div class="answer-content-wrapper">
+                                            <table class="table table-bordered table-answer">
+                                                <thead>
+                                                <tr>
+                                                    <th>Ngày nhập</th>
+                                                    <th>Nội dung</th>
+                                                </tr>
+                                                </thead>
+                                                <tbody>
+                                                <tr th:each="openAnswer:${ynAnswer.listOptionsOther}">
+                                                    <td th:text="${#dates.format(openAnswer.conductDate.getTime(), 'dd-MM-yyyy HH:mm')}"></td>
+                                                    <td th:text="${openAnswer.answerContent}"></td>
+                                                </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                    <div class="toggle-answer-content-container">
+                                        <div class="toggle-answer-content-holder">
+                                            Xem các ý kiến Khác
+                                        </div>
+                                        <div class="toggle-answer-content-wrapper">
+                                            <span class="toggle-answer-content fa fa-chevron-down"></span>
+                                        </div>
+                                    </div>
+                                </th:block>
+                            </div>
+                        </div>
+                        <div class="card-block question-card open-question"
+                             th:each="openQuestion:${criteria.openQuestionReportModels}">
+                            <p><b>Lời khuyên: </b>
+                            <div th:text="${openQuestion.suggestion}" th:remove="tag"></div>
+                            <p><b th:text="${openQuestion.questionContent}"></b><br>
+                            <div th:text="${openQuestion.responseCount}" th:remove="tag"></div>
+                            </p>
+                            <div class="answer-content-container" style="display: none;">
+                                <div class="answer-content-wrapper">
+                                    <table class="table table-bordered table-answer">
+                                        <thead>
+                                        <tr>
+                                            <th>Ngày nhập</th>
+                                            <th>Nội dung</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        <tr th:each="openAnswer:${openQuestion.openAnswerReportModels}">
+                                            <td th:text="${#dates.format(openAnswer.conductDate.getTime(), 'dd-MM-yyyy HH:mm')}"></td>
+                                            <td th:text="${openAnswer.answerContent}"></td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                            <div class="toggle-answer-content-container">
+                                <div class="toggle-answer-content-holder">
+                                    Xem nội dung các câu trả lời
+                                </div>
+                                <div class="toggle-answer-content-wrapper">
+                                    <span class="toggle-answer-content fa fa-chevron-down"></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </th:block>
+            </div>
+        </div>
+        <!-- End div content -->
+    </div>
+    <!-- /.container-fluid-->
+    <!-- /.content-wrapper-->
+    <div th:replace="fragments/footer"></div>
+</div>
+</body>
+<div th:replace="fragments/core-script"></div>
+<!-- Google chart -->
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+<script type="text/javascript" th:src="@{/js/view-report-semester.js}"></script>
+</html>

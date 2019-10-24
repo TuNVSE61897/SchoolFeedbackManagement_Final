@@ -1,0 +1,144 @@
+body {
+    height: 100%;
+    width: 100%;
+    padding-top: 50px;
+}
+
+.feedback-title-wrapper {
+    text-align: center;
+    width: 100%;
+    float: left;
+}
+
+.feedback-title {
+    color: #08AE9E;
+}
+
+.feedback-content {
+    height: 700px;
+    border: 2px #08AE9E solid;
+    border-radius: 5px;
+    overflow-y: auto;
+}
+
+.warning-text {
+    color: red;
+    visibility: hidden;
+}
+
+.warning-text.show {
+    visibility: visible;
+}
+.card-header {
+    /*background-color: #08AE9E;*/
+    color: #08AE9E;
+    text-align: left;
+}
+
+.card-block {
+    padding-left: 1.25rem;
+    text-align: left;
+}
+
+/* .form-group{
+    text-align: left;
+} */
+
+.card {
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.feedback-page {
+    display: none;
+}
+
+.feedback-page.page-active {
+    display: block;
+}
+
+.btn-pagination {
+    border: #08AE9E 2px solid;
+    border-radius: 10px;
+    color: #08AE9E;
+    background-color: #fff;
+}
+
+.btn-submit {
+    border: #fff 2px solid;
+    border-radius: 5px;
+    background-color: #08AE9E;
+    color: #fff;
+}
+
+.progress {
+    height: 20px;
+    border-radius: 10px;
+}
+
+.progress-bar {
+    background-color: #08ae9e;
+    transition:  0.2s linear;
+}
+
+/*require quesiton css*/
+.required-question {
+    color: red;
+    display: none;
+}
+
+.required-question.active {
+    display: inline-block;
+}
+
+/*answer css*/
+.answer-block {
+    position: relative;
+    width: 100%;
+    float: left;
+}
+
+.form-rating {
+    padding-top: 15px;
+    padding-bottom: 15px;
+    width: 80%;
+    float: left;
+    font-size: 30px;
+}
+
+.star-rating.checked {
+    color: yellow;
+}
+
+.form-rating > label:hover, .star-rating:hover {
+    cursor: pointer;
+}
+
+.other-option-input-wrapper {
+    padding-right: 1.25rem;
+    float: left;
+    width: 100%;
+    margin-bottom: 0.5rem;
+    display: none;
+}
+
+.other-option-input-wrapper.checked {
+    display: block;
+}
+
+.other-option-input {
+    padding-top: 8px;
+    padding-bottom: 8px;
+    border: none;
+    border-bottom: 1px solid black;
+    outline: none;
+    width: 100%;
+}
+
+div[class*='question-'].not-answered {
+    border-color: red;
+}
+
+textarea {
+    resize: none;
+}

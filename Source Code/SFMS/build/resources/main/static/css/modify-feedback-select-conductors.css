@@ -1,0 +1,71 @@
+h5.overview-title{
+    color: #08AE9E;
+    margin-left: 2%;
+    margin-top: 1%;
+    text-align: center;
+}
+.btn-edit-target{
+    background-color: #08AE9E;
+    color: #FFFFFF;
+}
+label.lb-inf{
+    color: #28a745;
+    font-weight: bold;
+    font-size: 18px;
+}
+label.inf-content{
+    color: grey;}
+a.remove-inf-item-link{
+    color: black;
+}
+a.add-inf-item-link{
+    color: #08ae9e;
+}
+.input-group-addon{
+    height: inherit;
+    font-size: smaller;
+}
+div.list-objs > div.col-md-6{
+    font-size: small;
+    border-right: 1px solid darkgray;
+}
+div.time-inf{
+    padding-top: 2%;
+}
+div.save-options > div.col-md-2{
+    margin-left: 1%;
+}
+label.lb-content{
+    margin-left: 1%;
+}
+.btn-to-select-viewers, .btn-to-select-target{
+    color: #08AE9E;
+    background-color: #FFFFFF;
+    border: 1px solid #08AE9E;
+    /*margin-top: 1%;*/
+    margin-bottom: 1%;
+}
+.btn-to-select-viewers{
+    float: left;
+}
+.btn-to-select-target{
+    float: right;
+}
+.nav-link{
+    /*color: #08ae9e;*/
+}
+div.tab-content{
+    margin-top: 1%;
+}
+
+.btn-check-target, .btn-check-all{
+    color: #08AE9E;
+    background-color: #FFFFFF;
+    border: 1px solid #08AE9E;
+}
+
+.btn-checked, .btn-checked-all{
+    color: #e0a800;
+    background-color: #FFFFFF;
+    border: 1px solid #e0a800;
+}

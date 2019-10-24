@@ -1,0 +1,537 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>List User Page</title>
+    <!-- Bootstrap core CSS-->
+    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Custom fonts for this template-->
+    <link href="vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <!-- Page level plugin CSS-->
+    <link href="vendor/datatables/dataTables.bootstrap4.css" rel="stylesheet">
+    <!-- Custom styles for this template-->
+    <link href="css/sb-admin.css" rel="stylesheet">
+    <link href="css/user.css" rel="stylesheet">
+    <link href="css/nav-style.css" rel="stylesheet">
+    <link href="css/progressbar-feedback.css" rel="stylesheet">
+</head>
+
+<body class="fixed-nav sticky-footer bg-dark" id="page-top">
+    <!-- Navigation-->
+    <nav class="navbar navbar-expand-lg navbar-dark navbar-custom fixed-top" id="mainNav">
+        <a class="navbar-brand" href="#">SFMS</a>
+        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+            <ul class="navbar-nav navbar-sidenav" id="exampleAccordion">
+                <li class="nav-profile">
+                    <div class="profile-picture">
+                        <a>
+                        <img src="./img/lawyer-avatar-flat-icon-01-.jpg">
+                    </a>
+                    </div>
+                    <div class="info">
+                        <span class="nav-link-text">
+                    "Việt Hoàn"<br>
+                    <small>Trưởng ban</small>
+                </span>
+                    </div>
+                </li>
+                <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Dashboard">
+                    <a class="nav-link" href="#">
+                    <i class="fa fa-fw fa-dashboard"></i>
+                    <span class="nav-link-text">Dashboard</span>
+                </a>
+                </li>
+                <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Feedback">
+                    <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapseFeedback" data-parent="#exampleAccordion">
+                    <i class="fa fa-fw fa-feed"></i>
+                    <span class="nav-link-text">Quản lý feedback</span>
+                </a>
+                    <ul class="sidenav-second-level collapse" id="collapseFeedback">
+                        <li>
+                            <a href="#">Tạo feedback mới</a>
+                        </li>
+                        <li>
+                            <a href="#">Xem danh sách feedback</a>
+                        </li>
+                        <li>
+                            <a href="#">Lịch sử feedback</a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Account">
+                    <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapseAccount" data-parent="#exampleAccordion">
+                    <i class="fa fa-fw fa-user-circle"></i>
+                    <span class="nav-link-text">Quản lý tài khoản</span>
+                </a>
+                    <ul class="sidenav-second-level collapse" id="collapseAccount">
+                        <li>
+                            <a href="#">Thêm mới tài khoản</a>
+                        </li>
+                        <li>
+                            <a href="#">Xem danh sách tài khoản</a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Department">
+                    <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapseDepartment" data-parent="#exampleAccordion">
+                    <i class="fa fa-fw fa-group"></i>
+                    <span class="nav-link-text">Quản lý phòng ban</span>
+                </a>
+                    <ul class="sidenav-second-level collapse" id="collapseDepartment">
+                        <li>
+                            <a href="#">Thêm mới phòng ban</a>
+                        </li>
+                        <li>
+                            <a href="#">Xem danh sách phòng ban</a>
+                        </li>
+                    </ul>
+                </li>
+                <!-- comment for future use -->
+                <!-- <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Menu Levels">
+              <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapseMulti" data-parent="#exampleAccordion">
+                <i class="fa fa-fw fa-sitemap"></i>
+                <span class="nav-link-text">Menu Levels</span>
+              </a>
+              <ul class="sidenav-second-level collapse" id="collapseMulti">
+                <li>
+                  <a href="#">Second Level Item</a>
+                </li>
+                <li>
+                  <a href="#">Second Level Item</a>
+                </li>
+                <li>
+                  <a href="#">Second Level Item</a>
+                </li>
+                <li>
+                  <a class="nav-link-collapse collapsed" data-toggle="collapse" href="#collapseMulti2">Third Level</a>
+                  <ul class="sidenav-third-level collapse" id="collapseMulti2">
+                    <li>
+                      <a href="#">Third Level Item</a>
+                    </li>
+                    <li>
+                      <a href="#">Third Level Item</a>
+                    </li>
+                    <li>
+                      <a href="#">Third Level Item</a>
+                    </li>
+                  </ul>
+                </li>
+              </ul>
+            </li> -->
+                <li class="nav-item active" data-toggle="tooltip" data-placement="right" title="Link">
+                    <a class="nav-link" href="#">
+                    <i class="fa fa-fw fa-link"></i>
+                    <span class="nav-link-text">Skeleton</span>
+                </a>
+                </li>
+            </ul>
+            <ul class="navbar-nav sidenav-toggler">
+                <li class="nav-item">
+                    <a class="nav-link text-center" id="sidenavToggler">
+                    <i class="fa fa-fw fa-angle-left"></i>
+                </a>
+                </li>
+            </ul>
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle mr-lg-2" id="alertsDropdown" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <i class="fa fa-fw fa-bell"></i>
+                    <span class="d-lg-none">Alerts
+              <span class="badge badge-pill badge-warning">6 New</span>
+            </span>
+                    <span class="indicator text-notification d-none d-lg-block">
+              <i class="fa fa-fw fa-circle"></i>
+            </span>
+                </a>
+                    <div class="dropdown-menu" aria-labelledby="alertsDropdown">
+                        <h6 class="dropdown-header">Thông báo:</h6>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="#">
+              <span class="text-success">
+                <strong>
+                  <i class="fa fa-long-arrow-up fa-fw"></i>Thông báo mới: </strong>
+              </span>
+                        <span class="small float-right text-muted">11:21 AM</span>
+                        <div class="dropdown-message small">Bạn có một feedback chưa hoàn thành</div>
+                    </a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="#">
+              <span class="text-danger">
+                <strong>
+                  <i class="fa fa-long-arrow-down fa-fw"></i>Thông báo cũ:</strong>
+              </span>
+                        <span class="small float-right text-muted">11:21 AM</span>
+                        <div class="dropdown-message small">Bạn có một feedback chưa hoàn thành</div>
+                    </a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="#">
+              <span class="text-success">
+                <strong>
+                  <i class="fa fa-long-arrow-up fa-fw"></i>Thông báo mới</strong>
+              </span>
+                        <span class="small float-right text-muted">11:21 AM</span>
+                        <div class="dropdown-message small">Kết quả feedback</div>
+                    </a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item small" href="#">Xem toàn bộ</a>
+                    </div>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle mr-lg-2" id="profileDropdown" href=# data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Việt Hoàng
+                </a>
+                    <div class="dropdown-menu" aria-labelledby="profileDropdown">
+                        <a class="dropdown-item" href="#">
+                        Thông tin tài khoản
+                    </a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href=# data-toggle="modal" data-target="#logoutModal">
+                        Đăng xuất
+                        <i class="fa fa-fw fa-sign-out"></i>
+                    </a>
+                    </div>
+                </li>
+                <li class="nav-item">
+                    <form class="form-inline my-2 my-lg-0 mr-lg-2">
+                        <div class="input-group">
+                            <input class="form-control" type="text" placeholder="Tìm...">
+                            <span class="input-group-btn">
+                <button class="btn btn-submit" type="button">
+                  <i class="fa fa-search"></i>
+                </button>
+              </span>
+                        </div>
+                    </form>
+                </li>
+                <!-- <li class="nav-item">
+              <a class="nav-link" data-toggle="modal" data-target="#exampleModal">
+                <i class="fa fa-fw fa-sign-out"></i>Logout</a>
+            </li> -->
+
+            </ul>
+        </div>
+    </nav>
+    <div class="content-wrapper">
+        <div class="container-fluid">
+            <!-- Breadcrumbs-->
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item">
+                    <a href="index.html">Dashboard</a>
+                </li>
+                <li class="breadcrumb-item active">Quản lí tài khoản</li>
+            </ol>
+            <!-- Example DataTables Card-->
+            <div class="card mb-3">
+                <div class="card-header-user">
+                    <i class="fa fa-table"></i> Quản lý người dùng hệ thống</div>
+                <div class="card-body">
+                    <div class="form-row" align="center">
+                        <div class="form-group col-sm-2">
+                            <button type="button">+</button>
+                        </div>
+                        <!--SubMajor-->
+                        <div class="form-group col-sm-3">
+                            <select id="inputSubMajorForLect" class="form-control">
+                                    <option selected>--Phòng ban/Chuyên ngành--</option>
+                                     <option>Ban giám hiệu</option>
+                                    <option>Phòng đào tạo</option>
+                                    <option>Phòng IT</option>
+                                    <option>Phòng bảo vệ</option>
+                                    <option>Phòng hành chính</option>
+                                    <option>SE</option>
+                                    <option>SB</option>
+                                    <option>IA</option>
+                                    <option>JS</option>
+                                    <option>IS</option>
+                                    <option>ES</option>
+                                </select>
+                        </div>
+                        <!--major-->
+                        <div class="form-group col-sm-2">
+                            <select id="inputMajorForLect" class="form-control">
+                                    <option selected>--Phân quyền--</option>
+                                    <option>Head of Academic</option>
+                                    <option>Student</option>
+                                    <option>Lecturer</option>
+                                    <option>Staff</option>
+                                </select>
+                        </div>
+                        <!--end major-->
+                        <!--Subject-->
+                        <div class="form-group col-sm-2">
+                            <select id="inputSubjectForLect" class="form-control">
+                                    <option selected>--Trạng thái--</option>
+                                    <option>Active</option>
+                                    <option>Deactivate</option>
+                                </select>
+                        </div>
+                        <!--end Subjects-->
+                    </div>
+                    <div class="table-responsive">
+                        <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                            <thead>
+                                <tr>
+                                    <th>Họ</th>
+                                    <th>Tên</th>
+                                    <th>Phòng ban/Chuyên ngành</th>
+                                    <th>Phân quyền</th>
+                                    <th>Trạng thái</th>
+                                    <th>Email</th>
+                                </tr>
+                            </thead>
+                            <tfoot>
+                                <tr>
+                                    <th>Họ</th>
+                                    <th>Tên</th>
+                                    <th>Phòng ban/Chuyên ngành</th>
+                                    <th>Phân quyền</th>
+                                    <th>Trạng thái</th>
+                                    <th>Email</th>
+                                </tr>
+                            </tfoot>
+                            <tbody>
+                                <tr>
+                                    <td>Thái Tiến</td>
+                                    <td>Hoàng</td>
+                                    <td>Phòng đào tạo</td>
+                                    <td>Staff</td>
+                                    <td>Active</td>
+                                    <td>hoangtt@fpt.edu.vn</td>
+                                </tr>
+                                <tr>
+                                    <td>Hoàng Quốc</td>
+                                    <td>Việt</td>
+                                    <td>Phòng IT</td>
+                                    <td>Staff</td>
+                                    <td>Active</td>
+                                    <td>viethq@fpt.edu.vn</td>
+                                </tr>
+                                <tr>
+                                    <td>Nguyễn Việt</td>
+                                    <td>Tú</td>
+                                    <td>Ban giám hiệu</td>
+                                    <td>Hiệu trưởng</td>
+                                    <td>Active</td>
+                                    <td>tunv@fpt.edu.vn</td>
+                                </tr>
+                                <tr>
+                                    <td>Sơn Tùng</td>
+                                    <td>MTP</td>
+                                    <td>JS</td>
+                                    <td>Student</td>
+                                    <td>Deactive</td>
+                                    <td>tungmtp@fpt.edu.vn</td>
+                                </tr>
+                                <tr>
+                                    <td>Cena</td>
+                                    <td>John</td>
+                                    <td>Phòng bảo vệ</td>
+                                    <td>Staff</td>
+                                    <td>Active</td>
+                                    <td>johncena@fpt.edu.vn</td>
+                                </tr>
+                                <tr>
+                                    <td>Orton</td>
+                                    <td>Randy</td>
+                                    <td>ES</td>
+                                    <td>Student</td>
+                                    <td>Deactive</td>
+                                    <td>randyorton@fpt.edu.vn</td>
+                                </tr>
+                                <tr>
+                                    <td>Trần Hồ Minh</td>
+                                    <td>Thuấn</td>
+                                    <td>SB</td>
+                                    <td>Student</td>
+                                    <td>Active</td>
+                                    <td>thuanthm@fpt.edu.vn</td>
+                                </tr>
+                                <tr>
+                                    <td>Kiều Trọng</td>
+                                    <td>Khánh</td>
+                                    <td>Phòng đào tạo</td>
+                                    <td>Lecturer</td>
+                                    <td>Active</td>
+                                    <td>khanhkt@fpt.edu.vn</td>
+                                </tr>
+                                <tr>
+                                    <td>Ngô Đặng Hà</td>
+                                    <td>An</td>
+                                    <td>Phòng đào tạo</td>
+                                    <td>Lecturer</td>
+                                    <td>Active</td>
+                                    <td>anndh@fpt.edu.vn</td>
+                                </tr>
+                                <tr>
+                                    <td>Kiều Hoàng</td>
+                                    <td>Long</td>
+                                    <td>Phòng đào tạo</td>
+                                    <td>Lecturer</td>
+                                    <td>Deactive</td>
+                                    <td>longkh@fpt.edu.vn</td>
+                                </tr>
+                                <tr>
+                                    <td>Bạch Minh</td>
+                                    <td>Đức</td>
+                                    <td>IS</td>
+                                    <td>Student</td>
+                                    <td>Deactive</td>
+                                    <td>ducbm@fpt.edu.vn</td>
+                                </tr>
+                                <tr>
+                                    <td>Trần Nho</td>
+                                    <td>Hiếu</td>
+                                    <td>IS</td>
+                                    <td>Student</td>
+                                    <td>Active</td>
+                                    <td>hieutn@fpt.edu.vn</td>
+                                </tr>
+                                <tr>
+                                    <td>Lâm Hữu Khánh</td>
+                                    <td>Phương</td>
+                                    <td>Phòng đào tạo</td>
+                                    <td>Lecturer</td>
+                                    <td>Active</td>
+                                    <td>phuonglhk@fpt.edu.vn</td>
+                                </tr>
+                                <tr>
+                                    <td>Quách Kiên</td>
+                                    <td>Cường</td>
+                                    <td>Ban giám hiệu</td>
+                                    <td>Hiệu phó</td>
+                                    <td>Deactive</td>
+                                    <td>cuongqk@fpt.edu.vn</td>
+                                </tr>
+                                <tr>
+                                    <td>Bùi Tiến</td>
+                                    <td>Dũng</td>
+                                    <td>Phòng IT</td>
+                                    <td>Staff</td>
+                                    <td>Active</td>
+                                    <td>dungbt@fpt.edu.vn</td>
+                                </tr>
+                                <tr>
+                                    <td>Hà Đức</td>
+                                    <td>Chinh</td>
+                                    <td>Phòng hành chính</td>
+                                    <td>Staff</td>
+                                    <td>Active</td>
+                                    <td>chinhhd@fpt.edu.vn</td>
+                                </tr>
+                                <tr>
+                                    <td>Nguyễn Quang</td>
+                                    <td>Hải</td>
+                                    <td>ES</td>
+                                    <td>Student</td>
+                                    <td>Deactive</td>
+                                    <td>hainq@fpt.edu.vn</td>
+                                </tr>
+                                <tr>
+                                    <td>Nguyễn Xuân</td>
+                                    <td>Mạnh</td>
+                                    <td>SB</td>
+                                    <td>Student</td>
+                                    <td>Active</td>
+                                    <td>manhnx@fpt.edu.vn</td>
+                                </tr>
+                                <tr>
+                                    <td>Lương Xuân</td>
+                                    <td>Trường</td>
+                                    <td>JS</td>
+                                    <td>Student</td>
+                                    <td>Active</td>
+                                    <td>truonglx@fpt.edu.vn</td>
+                                </tr>
+                                <tr>
+                                    <td>Lâm Phong Hồng</td>
+                                    <td>Duy</td>
+                                    <td>SE</td>
+                                    <td>Student</td>
+                                    <td>Active</td>
+                                    <td>duylph@fpt.edu.vn</td>
+                                </tr>
+                                <tr>
+                                    <td>Bùi Tiến</td>
+                                    <td>Dụng</td>
+                                    <td>IA</td>
+                                    <td>Student</td>
+                                    <td>Active</td>
+                                    <td>dungbt2@fpt.edu.vn</td>
+                                </tr>
+                                <tr>
+                                    <td>Nguyễn Công</td>
+                                    <td>Phượng</td>
+                                    <td>ES</td>
+                                    <td>Student</td>
+                                    <td>Deactive</td>
+                                    <td>phuongnc@fpt.edu.vn</td>
+                                </tr>
+                                <tr>
+                                    <td>Park Heo</td>
+                                    <td>Sang</td>
+                                    <td>Ban giám hiệu</td>
+                                    <td>Hiệu phó</td>
+                                    <td>Active</td>
+                                    <td>sangph@fpt.edu.vn</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- /.container-fluid-->
+        <!-- /.content-wrapper-->
+        <footer class="sticky-footer">
+            <div class="container">
+                <div class="text-center">
+                    <small>Copyright © Your Website 2017</small>
+                </div>
+            </div>
+        </footer>
+        <!-- Scroll to Top Button-->
+        <a class="scroll-to-top rounded" href="#page-top">
+      <i class="fa fa-angle-up"></i>
+    </a>
+        <!-- Logout Modal-->
+        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
+                        <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">×</span>
+            </button>
+                    </div>
+                    <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
+                    <div class="modal-footer">
+                        <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+                        <a class="btn btn-primary" href="login.html">Logout</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Bootstrap core JavaScript-->
+        <script src="vendor/jquery/jquery.min.js"></script>
+        <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+        <!-- Core plugin JavaScript-->
+        <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+        <!-- Page level plugin JavaScript-->
+        <script src="vendor/datatables/jquery.dataTables.js"></script>
+        <script src="vendor/datatables/dataTables.bootstrap4.js"></script>
+        <!-- Custom scripts for all pages-->
+        <script src="js/sb-admin.min.js"></script>
+        <!-- Custom scripts for this page-->
+        <script src="js/sb-admin-datatables.min.js"></script>
+    </div>
+</body>
+
+</html>

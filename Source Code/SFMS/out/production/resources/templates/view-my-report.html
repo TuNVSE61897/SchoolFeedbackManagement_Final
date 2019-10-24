@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
+    <meta name="description" content=""/>
+    <meta name="author" content=""/>
+    <title>Xem báo cáo của tôi</title>
+    <div th:replace="fragments/core-css"></div>
+    <link rel="stylesheet" th:href="@{/vendor/datatables/dataTables.bootstrap4.css}">
+</head>
+<body class="fixed-nav sticky-footer" id="page-top">
+<div th:replace="fragments/navbar-side"></div>
+<div class="content-wrapper">
+    <div class="container-fluid">
+        <!-- Breadcrumbs-->
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item">
+                <a href="index.html">Dashboard</a>
+            </li>
+            <li class="breadcrumb-item active">Báo cáo của tôi</li>
+        </ol>
+        <div class="row">
+            <div class="col-12">
+                <h1>Các báo cáo của tôi</h1>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-10 offset-1">
+                <th:block th:if="${clazzes!=null}">
+                    <table class="table table-bordered" id="tblMyReport">
+                        <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Mã môn</th>
+                            <th>Tên môn</th>
+                            <th>Lớp</th>
+                            <th></th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr th:each="clazz:${clazzes}">
+                            <td th:text="${clazzStat.count}"></td>
+                            <td th:text="${clazz.courseByCourseId.code}"></td>
+                            <td th:text="${clazz.courseByCourseId.name}"></td>
+                            <td th:text="${clazz.className}"></td>
+                            <td class="text-center"><a th:href="@{/view-report-details}">Xem báo cáo <i
+                                    class="fa fa-clipboard"></i></a></td>
+                            <!--TODO sửa đây ông eiii-->
+                        </tr>
+                        </tbody>
+                        <tfoot>
+                        <tr>
+                            <th>#</th>
+                            <th>Mã môn</th>
+                            <th>Tên môn</th>
+                            <th>Lớp</th>
+                            <th></th>
+                        </tr>
+                        </tfoot>
+                    </table>
+                </th:block>
+                <th:block th:if="${department!=null}">
+                    <div class="card" style="box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+  transition: all 0.3s cubic-bezier(.25,.8,.25,1);">
+                        <div class="card-body">
+                            <p class="card-text">Phòng ban của bạn: </p>
+                            <h5 class="card-title" th:text="${department.name}"></h5>
+                            <a th:href="@{/view-report-detail}" class="card-link">Xem báo cáo chi tiết <i
+                                    class="fa fa-arrow-right"></i> </a>
+                        </div>
+                    </div>
+                </th:block>
+            </div>
+        </div>
+    </div>
+    <!-- /.container-fluid-->
+    <!-- /.content-wrapper-->
+    <footer th:replace="fragments/footer"></footer>
+</div>
+</body>
+<div th:replace="fragments/core-script"></div>
+<script th:src="@{/vendor/datatables/jquery.dataTables.js}"></script>
+<script th:src="@{/vendor/datatables/dataTables.bootstrap4.js}"></script>
+<script th:src="@{/js/view-my-report.js}"></script>
+</html>

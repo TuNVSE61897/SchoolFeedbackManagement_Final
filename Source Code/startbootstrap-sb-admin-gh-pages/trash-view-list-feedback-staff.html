@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Xem Feedback</title>
+        <!-- Bootstrap core CSS-->
+        <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+        <!-- Custom fonts for this template-->
+        <link href="vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+        <!-- jQuery UI -->
+        <link href="vendor/jquery-ui/jquery-ui.min.css" rel="stylesheet" type="text/css">
+        <!-- custom style -->
+        <link href="css/view-list-feedback.css" rel="stylesheet" type="text/css">
+        <!-- Bootstrap core JavaScript-->
+        <script src="vendor/jquery/jquery.min.js"></script>
+        <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+        <!-- Core plugin JavaScript-->
+        <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+        <script src="vendor/jquery-ui/jquery-ui.min.js"></script>
+        <!-- custom script -->
+        <script src="js/conduct-feedback.js"></script>
+        <!-- dataTable -->
+        <link href="vendor/datatables/dataTables.bootstrap4.css" rel="stylesheet" type="text/css">
+        <link href="vendor/datatables/responsive.bootstrap4.min.css" rel="stylesheet" type="text/css">
+    </head>
+
+    <body>
+        <div class="container-fluid">
+            <!-- div feedback content -->
+            <div class="row justify-content-center">
+
+                <div class="col-sm-12 col-12 col-md-9 col-xl-9 col-lg-12 text-center">
+
+                    <h3 class="feedback-title" style="text-align: left">
+                        Kết quả Feedbacks
+                    </h3>
+                    <div class="tab">
+                       <!-- <button class="tablinks" onclick="openCity(event, 'all')">Tất cả</button>
+                        <button class="tablinks" onclick="openCity(event, 'undone')">Chưa hoàn thành</button>-->
+                        <div class="tablinks-div">
+                            <button style="background-color: #08AE9E; color: #fff; " class=" btn-create-feedback btn">
+                                Tạo Feedback mới
+                            </button>
+                              &nbsp;&nbsp;&nbsp;                
+                            Trạng thái
+                            <select id="filter-status" style="height: 35px; border-radius: 0.25em" name="">
+                                <option value="all">Tất cả</option>
+                                <option value="undone">Chưa hoàn thành</option>
+                            </select>
+                            &nbsp;&nbsp;&nbsp;                
+                            Loại Feedback 
+                            <select id="filter-scope" style="height: 35px; border-radius: 0.25em" name="">
+                                <option value="dep">Phòng ban</option>
+                                <option value="major">Ngành</option>
+                                <option value="subject">Môn</option>
+                            </select>
+                            &nbsp;&nbsp;&nbsp;
+                            Sắp xếp
+                            <select style="height: 35px;border-radius: 0.25em" name="">
+                                <option>A-Z</option>
+                                <option>Z-A</option>
+                                <option>Tăng theo kỳ</option>
+                                <option>Giảm theo kỳ</option>
+                            </select>
+
+                            <!--  Tìm 
+                              <input style="height: 35px; width: 150px; border-radius: 0.25em" type="" name="" value="" />
+                            -->
+                        </div>
+
+                    </div>
+                    <div class="col-sm-12 col-12 col-md-9 col-xl-9 col-lg-12 text-center feedback-content">
+
+                    </div>
+                    <form>
+                        <div class="feedback-page page-active">
+                            <div class="card-outer">
+                                <div class="card-block">
+                                    <br/>
+                                    <div id="dep" class="tab-content">
+                                        <table id="availableTemplate" style="width:90%" class="table table-responsive table-striped">
+                                            <thead>
+                                                <tr class="card-header">
+                                                    <th>#</th>
+                                                    <th>Phòng Ban</th>
+                                                    <th>Học Kỳ</th>
+                                                    <th>Tùy chọn</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td>1</td>
+                                                    <td>	
+                                                        Phòng Đào tạo
+                                                    </td>
+                                                    <td>
+                                                        Spring 2018
+                                                    </td>
+                                                    <td>
+                                                        <button class="btn btn-status-undone">Hoàn thành ngay</button>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>2</td>
+                                                    <td>	
+                                                        Phòng Khảo thí
+                                                    </td>
+                                                    <td>
+                                                        Fall 2017
+                                                    </td>
+                                                    <td> <button class="btn btn-status-undone">Hoàn thành ngay</button></td>
+                                                </tr>
+                                                <tr>
+                                                    <td>3</td>
+                                                    <td>	
+
+                                                        Phòng IT
+                                                    </td>
+                                                    <td>
+                                                        Summer 2017
+                                                    </td>
+                                                    <td>
+                                                        <button class="btn btn-status-done">Xem chi tiết</button>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>4</td>
+                                                    <td>	
+                                                        Phòng Công tác Sinh viên
+                                                    </td>
+
+                                                    <td>Summer 2017</td>
+                                                    <td><button class="btn btn-status-done">Xem chi tiết</button></td>
+                                                </tr>
+                                                <tr>
+                                                    <td>5</td>
+                                                    <td>	
+                                                        Phòng Tuyển sinh
+                                                    </td>
+                                                    <td>
+                                                        Summer 2017
+                                                    </td>
+                                                    <td><button class="btn btn-status-done">Xem chi tiết</button></td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+
+                                    <div id="major" class="tab-content">
+                                        <h3>Tokyo</h3>
+                                        <p>Tokyo is the capital of Japan.</p>
+                                    </div>
+                                    <div id="subject" class="tab-content">
+                                        <table id="availableTemplate" style="width:90%" class="table table-responsive table-striped">
+                                            <thead>
+                                                <tr class="card-header">
+                                                    <th>#</th>
+                                                    <th>Môn</th>
+                                                    <th>Học Kỳ</th>
+                                                    <th>Giảng viên</th>
+                                                    <th>Tùy chọn</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td>1</td>
+                                                    <td>	
+                                                        OOP111 - Object-Oriented with Java
+                                                    </td>
+                                                    <td>
+                                                        Spring 2018
+                                                    </td>
+                                                    <td>Nguyen Huy Hung</td>
+                                                    <td>
+                                                        <button class="btn btn-status-undone">Hoàn thành ngay</button>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>2</td>
+                                                    <td>	
+                                                        OOP111 - Object-Oriented with Java
+                                                    </td>
+                                                    <td>
+                                                        Fall 2017
+                                                    </td>
+                                                    <td>Nguyen Trong Tai</td>
+                                                    <td> <button class="btn btn-status-undone">Hoàn thành ngay</button></td>
+                                                </tr>
+                                                <tr>
+                                                    <td>3</td>
+                                                    <td>	
+                                                        OOP111 - Object-Oriented with Java
+                                                    </td>
+                                                    <td>
+                                                        Summer 2017
+                                                    </td>
+                                                    <td>Than Van Su</td>
+                                                    <td>
+                                                        <button class="btn btn-status-done">Xem chi tiết</button>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>4</td>
+                                                    <td>	
+                                                        OOP111 - Object-Oriented with Java
+                                                    </td>
+                                                    <td>
+                                                        Summer 2017
+                                                    </td>
+                                                    <td>Kieu Trong Khanh</td>
+                                                    <td><button class="btn btn-status-done">Xem chi tiết</button></td>
+                                                </tr>
+                                                <tr>
+                                                    <td>5</td>
+                                                    <td>	
+                                                        PRM391 - Mobile Programming
+                                                    </td>
+                                                    <td>
+                                                        Summer 2017
+                                                    </td>
+                                                    <td>Pham Cong Thanh</td>
+                                                    <td><button class="btn btn-status-done">Xem chi tiết</button></td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+
+
+                                </div>                           
+                            </div>
+                        </div>
+                    </form>
+                </div>
+
+            </div>
+            <!-- end div feedback content -->
+   
+
+        </div>
+        <!-- end div container -->
+
+
+    </body>
+
+
+    <!-- Bootstrap core JavaScript-->
+    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <!-- Core plugin JavaScript-->
+    <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+    <!-- dataTable -->
+    <script src="vendor/datatables/jquery.dataTables.js"></script>
+    <script src="vendor/datatables/dataTables.bootstrap4.js"></script>
+    <script src="vendor/datatables/dataTables.responsive.min.js"></script>
+    <script src="vendor/datatables/responsive.bootstrap4.min.js"></script>
+
+    <!-- Custom scripts for all pages-->
+    <script src="js/sb-admin.min.js"></script>
+    <!-- Custom javascript -->
+    <script src="js/select-template.js"></script>
+    <script src="js/view-feedback.js"></script>
+</html>
